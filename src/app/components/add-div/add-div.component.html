@@ -14,13 +14,13 @@
     <div class="card row">
       <div class="card2">
         <label class="cardspan open-button" for="height"
-          >Sayfa Yüksekligi : {{_heightP}}</label
+          >Sayfa Yüksekligi : {{ _heightP }}</label
         >
         <label class="cardspan open-button" for="width"
-          >Sayfa Genisligi : {{_widthP}}</label
+          >Sayfa Genisligi : {{ _widthP }}</label
         >
         <label class="cardspan open-button" for="width"
-          >Sayfa Rengi : {{_bgColorP}}</label
+          >Sayfa Rengi : {{ _bgColorP }}</label
         >
         <button class="open-button" (click)="openPageForm()">Yeni Sayfa</button>
       </div>
@@ -71,23 +71,23 @@
     <!--#region Element Prop-->
     <div class="card row">
       <div class="card2">
-        <label class="cardspan open-button" for="id">ID : {{_id}}</label>
+        <label class="cardspan open-button" for="id">ID : {{ _id }}</label>
         <label class="cardspan open-button" for="span"
-          >Icerik : {{_span}}</label
+          >Icerik : {{ _span }}</label
         >
         <label class="cardspan open-button" for="bg"
-          >Background : {{_bgColorD}}<br />{{_bgUrlD}}</label
+          >Background : {{ _bgColorD }}<br />{{ _bgUrlD }}</label
         >
         <label class="cardspan open-button" for="layer"
-          >Katman : {{_layer}}</label
+          >Katman : {{ _layer }}</label
         >
         <label class="cardspan open-button" for="height"
-          >Yükseklik : {{_heightD}}</label
+          >Yükseklik : {{ _heightD }}</label
         >
         <label class="cardspan open-button" for="width"
-          >Genislik : {{_widthD}}</label
+          >Genislik : {{ _widthD }}</label
         >
-        <label class="cardspan open-button" for="tip">Tip : {{_tip}}</label>
+        <label class="cardspan open-button" for="tip">Tip : {{ _tip }}</label>
         <button class="open-button" (click)="openDivForm()">Duzenle</button>
         <button class="open-button" (click)="removeElement()">Kaldir</button>
       </div>
@@ -140,7 +140,7 @@
               [style.font-family]="font.value"
               name="font"
             >
-              {{font.viewValue}}
+              {{ font.viewValue }}
             </mat-option>
           </mat-select> </mat-form-field
         ><br />
@@ -154,7 +154,7 @@
               [value]="loc.value"
               name="spanloc"
             >
-              {{loc.viewValue}}
+              {{ loc.viewValue }}
             </mat-option>
           </mat-select> </mat-form-field
         ><br />
@@ -164,7 +164,7 @@
           <mat-label>Seçiniz</mat-label>
           <mat-select [(ngModel)]="_tip" name="tip">
             <mat-option *ngFor="let tip of tips" [value]="tip.value" name="tip">
-              {{tip.viewValue}}
+              {{ tip.viewValue }}
             </mat-option>
           </mat-select> </mat-form-field
         ><br />
@@ -179,7 +179,7 @@
             (valueChange)="changeBgType(bg.value)"
           >
             <mat-option *ngFor="let bg of bgs" [value]="bg.value" name="bg">
-              {{bg.viewValue}}
+              {{ bg.viewValue }}
             </mat-option>
           </mat-select> </mat-form-field
         ><br />
@@ -204,7 +204,8 @@
           /><br />
         </div>
 
-        <label for="layer">Element Katmanı : {{_layer}}</label><br />
+        <label for="layer">Element Katmanı : {{ _layer }}</label
+        ><br />
         <button type="button" class="btn col-xs-6" (click)="layerUp()">
           +
         </button>
@@ -238,7 +239,7 @@
       [style.--heightpage.cm]="page.heightP"
       [style.--widthpage.cm]="page.widthP"
       [style.background-color]="page.bgColorP"
-      [style.background-image]='"url(assets/grid.png)"'
+      [style.background-image]="'url(assets/grid.png)'"
     >
       <!--#region Add Element-->
       <div
@@ -253,7 +254,9 @@
         cdkDrag
         [style.z-index]="element.layer"
         [style.background]="element.bgColorD"
-        [style.transform]="'translate('+element.left + 'px, ' + element.top + 'px)'"
+        [style.transform]="
+          'translate(' + element.left + 'px, ' + element.top + 'px)'
+        "
         [style.width.px]="element.widthD"
         [style.height.px]="element.heightD"
       >
@@ -272,7 +275,7 @@
           [style.right.px]="element.spanRight"
           [style.bottom.px]="element.spanBottom"
           [style.text-decoration]="element.textDecoration"
-          >{{element.span}}</span
+          >{{ element.span }}</span
         >
         <div class="example-handle" cdkDragHandle></div>
       </div>
