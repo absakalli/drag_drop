@@ -100,10 +100,7 @@ export class ElementComponent {
   //#region Element işlemleri
 
   constructor(
-    private service: ElementService,
-    private route: ActivatedRoute,
-    private router: Router,
-    public dialog: MatDialog
+    private service: ElementService
   ) {}
 
   ngOnInit() {
@@ -153,6 +150,15 @@ export class ElementComponent {
     // this._heightP = this.page.heightP;
     // this._widthP = this.page.widthP;
     // this.elements = [...Data.Elements];
+    this.service.getElements()
+    .subscribe({
+      next: (elements) => {
+        console.log(elements);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
   }
 
   export() {
