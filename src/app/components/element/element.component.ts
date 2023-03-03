@@ -2,7 +2,6 @@ import {
   Component,
   ElementRef,
   HostListener,
-  OnInit,
   QueryList,
   ViewChild,
   ViewChildren,
@@ -13,13 +12,15 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import exportFromJSON from 'export-from-json';
 import Data from '../../Positions.json';
+import { _Element } from 'src/app/models/element.model';
+import { _Page } from 'src/app/models/page.model';
 
 @Component({
-  selector: 'add-div',
-  templateUrl: './add-div.component.html',
-  styleUrls: ['./add-div.component.css'],
+  selector: 'app-element',
+  templateUrl: './element.component.html',
+  styleUrls: ['./element.component.css'],
 })
-export class AddDiv implements OnInit {
+export class ElementComponent {
   @ViewChildren('elements') _elements: QueryList<ElementRef>;
   @ViewChild('box') box: ElementRef;
   @HostListener('document:keydown.escape') escapeHandle() {
@@ -426,71 +427,4 @@ export class AddDiv implements OnInit {
   //#endregion
 
   //#endregion
-}
-
-export class _Element {
-  id: any;
-  tip: any;
-  top: any;
-  left: any;
-  span: any;
-  font: any;
-  punto: any;
-  fontWeight: any;
-  fontStyle: any;
-  textDecoration: any;
-  spanTop: any;
-  spanLeft: any;
-  spanRight: any;
-  spanBottom: any;
-  layer: any;
-  heightD: any;
-  widthD: any;
-  spanLoc: any;
-  bgColorD: any;
-  bgUrlD: any;
-  bg: any;
-
-  constructor(
-    id: any,
-    widthD: any,
-    heightD: any,
-    bgUrlD: any,
-    layer: any,
-    bgColorD: any
-  ) {
-    this.id = id;
-    this.widthD = widthD;
-    this.heightD = heightD;
-    this.top = '';
-    this.left = '';
-    this.bgUrlD = bgUrlD;
-    this.layer = layer;
-    this.bgColorD = bgColorD;
-    this.spanLoc = 'Orta';
-    this.span = 'Drag & Drop';
-    this.tip = 'Yazi';
-    this.bg = 'color';
-    this.punto = 25;
-    this.font = 'Arial';
-    this.fontWeight = '';
-    this.fontStyle = '';
-    this.textDecoration = '';
-    this.spanTop = null;
-    this.spanBottom = null;
-    this.spanLeft = null;
-    this.spanRight = null;
-  }
-}
-
-class _Page {
-  heightP: any;
-  widthP: any;
-  bgColorP: any;
-
-  constructor(heightP: any, widthP: any, bgColorP: any) {
-    this.heightP = heightP;
-    this.widthP = widthP;
-    this.bgColorP = bgColorP;
-  }
 }

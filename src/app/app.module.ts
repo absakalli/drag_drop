@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialExampleModule } from '../material.module';
+import { MaterialExampleModule } from './material/material.module';
 
 import { A11yModule } from '@angular/cdk/a11y';
 import { ClipboardModule } from '@angular/cdk/clipboard';
@@ -54,13 +54,13 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { AddDiv } from './components/add-div/add-div.component';
+import { ElementComponent } from './components/element/element.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddDiv
+    ElementComponent
   ],
   imports: [
     BrowserModule,
