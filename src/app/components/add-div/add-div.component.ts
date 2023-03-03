@@ -109,14 +109,11 @@ export class AddDiv implements OnInit {
 
   jsPdf() {
     //HTML to PDF
-    // html2canvas(this.box.nativeElement).then((canvas) => {
-    //   let PDF = new jsPDF('p', 'cm', [this._heightP, this._widthP]);
-    //   PDF.addImage(canvas, 'JPEG', 0, 0, 0, 0);
-    //   window.open(PDF.output('bloburl'));
-    // });
+    html2canvas(this.box.nativeElement).then((canvas) => {
       let PDF = new jsPDF('p', 'cm', [this._heightP, this._widthP]);
-      PDF.html(this.box.nativeElement);
+      PDF.addImage(canvas, 'JPEG', 0, 0, 0, 0);
       window.open(PDF.output('bloburl'));
+    });
   }
 
   addElement() {
