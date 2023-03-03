@@ -14,6 +14,9 @@ import exportFromJSON from 'export-from-json';
 import Data from '../../Positions.json';
 import { _Element } from 'src/app/models/element.model';
 import { _Page } from 'src/app/models/page.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ElementService } from 'src/app/services/element.service';
 
 @Component({
   selector: 'app-element',
@@ -96,6 +99,13 @@ export class ElementComponent {
 
   //#region Element işlemleri
 
+  constructor(
+    private service: ElementService,
+    private route: ActivatedRoute,
+    private router: Router,
+    public dialog: MatDialog
+  ) {}
+
   ngOnInit() {
     this.page = new _Page('29.7', '21', '#460707');
     this._heightP = this.page.heightP;
@@ -138,11 +148,11 @@ export class ElementComponent {
 
   import() {
     //sayfada bulunan elementleri json dosyası olarak dışarı aktarır
-    this.page = Data.Page;
-    this._bgColorP = this.page.bgColorP;
-    this._heightP = this.page.heightP;
-    this._widthP = this.page.widthP;
-    this.elements = [...Data.Elements];
+    // this.page = Data.Page;
+    // this._bgColorP = this.page.bgColorP;
+    // this._heightP = this.page.heightP;
+    // this._widthP = this.page.widthP;
+    // this.elements = [...Data.Elements];
   }
 
   export() {
