@@ -99,9 +99,7 @@ export class ElementComponent {
 
   //#region Element işlemleri
 
-  constructor(
-    private service: ElementService
-  ) {}
+  constructor(private service: ElementService) {}
 
   ngOnInit() {
     this.page = new _Page('29.7', '21', '#460707');
@@ -143,22 +141,28 @@ export class ElementComponent {
     this.clearFieldElement();
   }
 
-  import() {
-    //sayfada bulunan elementleri json dosyası olarak dışarı aktarır
-    // this.page = Data.Page;
-    // this._bgColorP = this.page.bgColorP;
-    // this._heightP = this.page.heightP;
-    // this._widthP = this.page.widthP;
-    // this.elements = [...Data.Elements];
-    this.service.getElements()
-    .subscribe({
+  getElements() {
+    this.service.getElements().subscribe({
       next: (elements) => {
-        console.log(elements);
+        this.elements = [...elements];
       },
       error: (err) => {
         console.log(err);
-      }
-    })
+      },
+    });
+  }
+
+  setElements() {
+    //DÜZENLENECEK
+  }
+
+  import() {
+    //sayfada bulunan elementleri json dosyası olarak dışarı aktarır
+    this.page = Data.Page;
+    this._bgColorP = this.page.bgColorP;
+    this._heightP = this.page.heightP;
+    this._widthP = this.page.widthP;
+    this.elements = [...Data.Elements];
   }
 
   export() {
