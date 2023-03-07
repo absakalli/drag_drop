@@ -10,6 +10,9 @@
         <button class="open-button" (click)="setElements()">
           Set Database Elements
         </button>
+        <button class="open-button" (click)="deleteElements()">
+          Del Database Elements
+        </button>
         <button class="open-button" (click)="import()">Import</button>
         <button class="open-button" (click)="export()">Export</button>
         <button class="open-button" (click)="jsPdf()">Kaydet</button>
@@ -82,16 +85,16 @@
           >Icerik : {{ _span }}</label
         >
         <label class="cardspan open-button" for="bg"
-          >Background : {{ _bgColorD }}<br />{{ _bgUrlD }}</label
+          >Background : {{ _bgColor }}<br />{{ _bgUrl }}</label
         >
         <label class="cardspan open-button" for="layer"
           >Katman : {{ _layer }}</label
         >
         <label class="cardspan open-button" for="height"
-          >Yükseklik : {{ _heightD }}</label
+          >Yükseklik : {{ _height }}</label
         >
         <label class="cardspan open-button" for="width"
-          >Genislik : {{ _widthD }}</label
+          >Genislik : {{ _width }}</label
         >
         <label class="cardspan open-button" for="tip">Tip : {{ _tip }}</label>
         <button class="open-button" (click)="openDivForm()">Duzenle</button>
@@ -196,7 +199,7 @@
             type="url"
             placeholder="Arka Plan URL'sini Ekleyiniz."
             name="bgurl"
-            [(ngModel)]="_bgUrlD"
+            [(ngModel)]="_bgUrl"
           />
         </div>
 
@@ -206,7 +209,7 @@
             type="color"
             name="bgcolor"
             id="bgcolor"
-            [(ngModel)]="_bgColorD"
+            [(ngModel)]="_bgColor"
           /><br />
         </div>
 
@@ -259,15 +262,15 @@
         cdkDragBoundary=".example-boundary"
         cdkDrag
         [style.z-index]="element.layer"
-        [style.background]="element.bgColorD"
+        [style.background]="element.bgColor"
         [style.transform]="
           'translate(' + element.left + 'px, ' + element.top + 'px)'
         "
-        [style.width.px]="element.widthD"
-        [style.height.px]="element.heightD"
+        [style.width.px]="element.width"
+        [style.height.px]="element.height"
       >
         <!-- [style.background-image]="element.bgUrlD" -->
-        <img id="image" [src]="element.bgUrlD" />
+        <img id="image" [src]="element.bgUrl" />
         <span
           #span
           id="span"
@@ -280,7 +283,7 @@
           [style.left.px]="element.spanLeft"
           [style.right.px]="element.spanRight"
           [style.bottom.px]="element.spanBottom"
-          [style.text-decoration]="element.textDecoration"
+          [style.text-decoration]="element.textDecor"
           >{{ element.span }}</span
         >
         <div class="example-handle" cdkDragHandle></div>

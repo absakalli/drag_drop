@@ -8,17 +8,17 @@ export class _Element {
   public punto: any;
   public fontWeight: any;
   public fontStyle: any;
-  public textDecoration: any;
+  public textDecor: any;
   public spanTop: any;
   public spanLeft: any;
   public spanRight: any;
   public spanBottom: any;
   public layer: any;
-  public heightD: any;
-  public widthD: any;
+  public height: any;
+  public width: any;
   public spanLoc: any;
-  public bgColorD: any;
-  public bgUrlD: any;
+  public bgColor: any;
+  public bgUrl: any;
   public bg: any;
 
   constructor(
@@ -27,16 +27,18 @@ export class _Element {
     heightD: any,
     bgUrlD: any,
     layer: any,
-    bgColorD: any
+    bgColorD: any,
+    top: any,
+    left: any
   ) {
     this.id = id;
-    this.widthD = widthD;
-    this.heightD = heightD;
-    this.top = '';
-    this.left = '';
-    this.bgUrlD = bgUrlD;
+    this.width = widthD;
+    this.height = heightD;
+    this.top = top;
+    this.left = left;
+    this.bgUrl = bgUrlD;
     this.layer = layer;
-    this.bgColorD = bgColorD;
+    this.bgColor = bgColorD;
     this.spanLoc = 'Orta';
     this.span = 'Drag & Drop';
     this.tip = 'Yazi';
@@ -45,7 +47,7 @@ export class _Element {
     this.font = 'Arial';
     this.fontWeight = '';
     this.fontStyle = '';
-    this.textDecoration = '';
+    this.textDecor = '';
     this.spanTop = null;
     this.spanBottom = null;
     this.spanLeft = null;

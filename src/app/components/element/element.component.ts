@@ -56,12 +56,12 @@ export class ElementComponent {
   _punto: any;
   _index: any;
   _layer: any;
-  _widthD: any;
-  _heightD: any;
+  _width: any;
+  _height: any;
   _spanLoc: any;
   _bg: any;
-  _bgUrlD: any;
-  _bgColorD: any;
+  _bgUrl: any;
+  _bgColor: any;
   isHiddenD: any;
   isHiddenID: any;
   isHiddenCD: any;
@@ -130,7 +130,9 @@ export class ElementComponent {
       50,
       '',
       '0',
-      '#000000'
+      '#000000',
+      0,
+      0
     );
     this.elements.push(this.element);
   }
@@ -153,7 +155,28 @@ export class ElementComponent {
   }
 
   setElements() {
-    //DÜZENLENECEK
+    this.elements.forEach((element) => {
+      this.service.setElements(element).subscribe({
+        next: (elements) => {
+          console.log(elements);
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+    });
+  }
+
+  deleteElements() {
+    if (this._id != undefined || null || '') {
+      this.service.deleteElements(this._id).subscribe({
+        next: (elements) => {
+          console.log(elements);
+        },
+      });
+    } else {
+      alert('Lütfen düzenlemek istedğiniz elementi seçiniz.');
+    }
   }
 
   import() {
@@ -203,10 +226,10 @@ export class ElementComponent {
     this._tip = '';
     this._span = '';
     this._layer = '';
-    this._bgColorD = '';
-    this._bgUrlD = '';
-    this._widthD = '';
-    this._heightD = '';
+    this._bgColor = '';
+    this._bgUrl = '';
+    this._width = '';
+    this._height = '';
     this._spanLoc = '';
     this._punto = '';
     this._font = '';
@@ -240,7 +263,7 @@ export class ElementComponent {
       element.punto = this._punto;
       element.layer = this._layer;
       element.spanLoc = this._spanLoc;
-      // element.bgUrlD = 'url(' + this._bgUrlD + ')';
+      // element.bgUrl = 'url(' + this._bgUrl + ')';
       this.setSpanLoc();
       this.setSpanProp();
       this.setBG(element);
@@ -258,8 +281,8 @@ export class ElementComponent {
     var matrix = new WebKitCSSMatrix(
       _elements[i].nativeElement.style.transform
     );
-    element.heightD = _elements[i].nativeElement.offsetHeight;
-    element.widthD = _elements[i].nativeElement.offsetWidth;
+    element.height = _elements[i].nativeElement.offsetHeight;
+    element.width = _elements[i].nativeElement.offsetWidth;
     element.top = matrix.m42;
     element.left = matrix.m41;
     this._id = this.element.id;
@@ -268,8 +291,8 @@ export class ElementComponent {
     this._font = this.element.font;
     this._punto = this.element.punto;
     this._layer = this.element.layer;
-    this._widthD = this.element.widthD;
-    this._heightD = this.element.heightD;
+    this._width = this.element.width;
+    this._height = this.element.height;
     this._spanLoc = this.element.spanLoc;
     this.getSpanProp();
     this.getBG(element);
@@ -343,9 +366,9 @@ export class ElementComponent {
       this.element.fontStyle = '';
     }
     if (this._isUL) {
-      this.element.textDecoration = 'underline';
+      this.element.textDecor = 'underline';
     } else {
-      this.element.textDecoration = '';
+      this.element.textDecor = '';
     }
   }
 
@@ -361,7 +384,7 @@ export class ElementComponent {
     } else {
       this._isI = false;
     }
-    if (this.element.textDecoration) {
+    if (this.element.textDecor) {
       this._isUL = true;
     } else {
       this._isUL = false;
@@ -393,22 +416,22 @@ export class ElementComponent {
     element.bg = this._bg;
     switch (this._bg) {
       case 'img':
-        element.bgUrlD = this._bgUrlD;
-        element.bgColorD = '#00000000';
-        this._bgColorD = '';
-        this._bgUrlD = element.bgUrlD;
+        element.bgUrl = this._bgUrl;
+        element.bgColor = '#00000000';
+        this._bgColor = '';
+        this._bgUrl = element.bgUrl;
         break;
       case 'color':
-        element.bgColorD = this._bgColorD;
-        element.bgUrlD = '';
-        this._bgUrlD = '';
-        this._bgColorD = element.bgColor;
+        element.bgColor = this._bgColor;
+        element.bgUrl = '';
+        this._bgUrl = '';
+        this._bgColor = element.bgColor;
         break;
       case 'trans':
-        element.bgColorD = '#00000000';
-        element.bgUrlD = '';
-        this._bgUrlD = '';
-        this._bgColorD = 'Transparan';
+        element.bgColor = '#00000000';
+        element.bgUrl = '';
+        this._bgUrl = '';
+        this._bgColor = 'Transparan';
         break;
       default:
         break;
@@ -419,22 +442,22 @@ export class ElementComponent {
     //elementin arkaplanını forma yazar
     switch (element.bg) {
       case 'img':
-        this._bgUrlD = element.bgUrlD;
-        this._bgColorD = '';
+        this._bgUrl = element.bgUrl;
+        this._bgColor = '';
         this._bg = 'img';
         this.isHiddenID = false;
         this.isHiddenCD = true;
         break;
       case 'color':
-        this._bgUrlD = '';
-        this._bgColorD = element.bgColorD;
+        this._bgUrl = '';
+        this._bgColor = element.bgColor;
         this._bg = 'color';
         this.isHiddenID = true;
         this.isHiddenCD = false;
         break;
       case 'trans':
-        this._bgUrlD = '';
-        this._bgColorD = 'Transparan';
+        this._bgUrl = '';
+        this._bgColor = 'Transparan';
         this._bg = 'trans';
         this.isHiddenID = true;
         this.isHiddenCD = true;
