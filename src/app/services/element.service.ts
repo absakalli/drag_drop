@@ -16,21 +16,21 @@ export class ElementService {
 
   getElements(token: string): Observable<_Element[]> {
     const reqHeaders = new HttpHeaders({
-      Authorization: ' bearer ' + token,
+      Authorization: 'bearer ' + token,
       'Content-Type': 'application/json',
     });
     return this.http.get<_Element[]>(
-      this.baseApiUrl + 'api/Page/GetAll',
+      this.baseApiUrl + 'api/PageItem',
       { headers: reqHeaders }
     );
   }
 
   setElements(element: _Element, token: string): Observable<_Element> {
     const reqHeaders = new HttpHeaders({
-      Authorization: ' bearer ' + token,
+      Authorization: 'bearer ' + token,
       'Content-Type': 'application/json',
     });
-    return this.http.post<_Element>(this.baseApiUrl + 'api/', element, {
+    return this.http.post<_Element>(this.baseApiUrl + 'api/PageItem', element, {
       headers: reqHeaders,
     });
   }
@@ -40,7 +40,7 @@ export class ElementService {
       Authorization: ' bearer ' + token,
       'Content-Type': 'application/json',
     });
-    return this.http.delete<_Element>(this.baseApiUrl + 'api/Element/' + id, {
+    return this.http.delete<_Element>(this.baseApiUrl + 'api/PageItem/' + id, {
       headers: reqHeaders,
     });
   }
