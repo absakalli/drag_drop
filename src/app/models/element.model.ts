@@ -1,5 +1,6 @@
 export class _Element {
   public id: any;
+  public pageId: any;
   public tip: any;
   public top: any;
   public left: any;

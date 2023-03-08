@@ -12,11 +12,11 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import exportFromJSON from 'export-from-json';
 import Data from '../../Positions.json';
+import { ElementService } from 'src/app/services/element.service';
 import { _Element } from 'src/app/models/element.model';
 import { _Page } from 'src/app/models/page.model';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
-import { ElementService } from 'src/app/services/element.service';
+import { _Data } from 'src/app/models/data.model';
+import { _Token } from 'src/app/models/token.model';
 
 @Component({
   selector: 'app-element',
@@ -33,6 +33,8 @@ export class ElementComponent {
 
   elements: _Element[];
   element: _Element;
+  token: _Token;
+  data: _Data;
   page: _Page;
   //#region Page Var
 
@@ -102,10 +104,12 @@ export class ElementComponent {
   constructor(private service: ElementService) {}
 
   ngOnInit() {
+    this.data = new _Data('hseyinsungur@gmail.com', '123456', 1, true);
+    this.login();
     this.page = new _Page('29.7', '21', '#460707');
-    this._heightP = this.page.heightP;
-    this._widthP = this.page.widthP;
-    this._bgColorP = this.page.bgColorP;
+    this._heightP = this.page.pageHeight;
+    this._widthP = this.page.pageWidth;
+    this._bgColorP = this.page.backgroundColor;
     this.elements = [];
     this.isHiddenD = true;
     this.isHiddenP = true;
@@ -143,8 +147,19 @@ export class ElementComponent {
     this.clearFieldElement();
   }
 
+  login() {
+    this.service.authentication(this.data).subscribe({
+      next: (_token) => {
+        this.token = _token;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
   getElements() {
-    this.service.getElements().subscribe({
+    this.service.getElements(this.token.accessToken).subscribe({
       next: (elements) => {
         this.elements = [...elements];
       },
@@ -156,7 +171,7 @@ export class ElementComponent {
 
   setElements() {
     this.elements.forEach((element) => {
-      this.service.setElements(element).subscribe({
+      this.service.setElements(element, this.token.accessToken).subscribe({
         next: (elements) => {
           console.log(elements);
         },
@@ -169,7 +184,7 @@ export class ElementComponent {
 
   deleteElements() {
     if (this._id != undefined || null || '') {
-      this.service.deleteElements(this._id).subscribe({
+      this.service.deleteElements(this._id, this.token.accessToken).subscribe({
         next: (elements) => {
           console.log(elements);
         },
@@ -182,9 +197,9 @@ export class ElementComponent {
   import() {
     //sayfada bulunan elementleri json dosyası olarak dışarı aktarır
     this.page = Data.Page;
-    this._bgColorP = this.page.bgColorP;
-    this._heightP = this.page.heightP;
-    this._widthP = this.page.widthP;
+    this._bgColorP = this.page.backgroundColor;
+    this._heightP = this.page.pageHeight;
+    this._widthP = this.page.pageWidth;
     this.elements = [...Data.Elements];
   }
 
@@ -212,9 +227,9 @@ export class ElementComponent {
   setPageProp() {
     //içerisindeki elementleri siler ve girilen değerlerden yeni bir sayfa oluşturur
     this.elements = [];
-    this.page.widthP = this._widthP;
-    this.page.heightP = this._heightP;
-    this.page.bgColorP = this._bgColorP;
+    this.page.pageWidth = this._widthP;
+    this.page.pageHeight = this._heightP;
+    this.page.backgroundColor = this._bgColorP;
     this.isHiddenP = true;
     this.clearFieldElement();
   }

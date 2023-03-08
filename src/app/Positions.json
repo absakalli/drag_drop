@@ -1,14 +1,17 @@
 {
   "Page": {
-    "name": "ASD",
-    "heightP": 50,
-    "widthP": 80,
-    "bgColorP": "#ff0000",
-    "bgUrlP": ""
+    "id": "0c3dee07-4620-4074-813b-e1ff4242509e",
+    "pageName": "ASD",
+    "pageHeight": 20,
+    "pageWidth": 50,
+    "pageHeightPx": 500,
+    "pageWidthPx": 1000,
+    "backgroundColor": "#ff0000"
   },
   "Elements": [
     {
       "id": "0c3dee07-4620-4074-813b-e1ff4242509e",
+      "pageId": "0c3dee07-4620-4074-813b-e1ff4242509e",
       "width": 640,
       "height": 452,
       "top": 327,
@@ -32,6 +35,7 @@
     },
     {
       "id": "6b7c24cd-4ac1-41d4-a967-7a32814a5667",
+      "pageId": "0c3dee07-4620-4074-813b-e1ff4242509e",
       "width": 442,
       "height": 173,
       "top": 0,
@@ -55,6 +59,7 @@
     },
     {
       "id": "730aba75-fb09-41d7-afc9-3421981c9c03",
+      "pageId": "0c3dee07-4620-4074-813b-e1ff4242509e",
       "width": 233,
       "height": 512,
       "top": 53,
@@ -78,6 +83,7 @@
     },
     {
       "id": "286aa656-f1be-4126-9099-e9165093d547",
+      "pageId": "0c3dee07-4620-4074-813b-e1ff4242509e",
       "width": 256,
       "height": 386,
       "top": 583,
@@ -101,6 +107,7 @@
     },
     {
       "id": "0764485c-365b-443f-b8b2-e53defd531f8",
+      "pageId": "0c3dee07-4620-4074-813b-e1ff4242509e",
       "width": 295,
       "height": 289,
       "top": 522,

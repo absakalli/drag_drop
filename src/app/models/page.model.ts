@@ -1,11 +1,15 @@
 export class _Page {
-  heightP: any;
-  widthP: any;
-  bgColorP: any;
+  id: any;
+  pageName: any;
+  pageHeightPx: any;
+  pageHeight: any;
+  pageWidthPx: any;
+  pageWidth: any;
+  backgroundColor: any;
 
-  constructor(heightP: any, widthP: any, bgColorP: any) {
-    this.heightP = heightP;
-    this.widthP = widthP;
-    this.bgColorP = bgColorP;
+  constructor(pageHeight: any, pageWidth: any, backgroundColor: any) {
+    this.pageHeight = pageHeight;
+    this.pageWidth = pageWidth;
+    this.backgroundColor = backgroundColor;
   }
 }

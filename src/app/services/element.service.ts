@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
 import { _Element } from '../models/element.model';
+import { _Data } from '../models/data.model';
 import { _Token } from '../models/token.model';
 
 @Injectable({
@@ -13,26 +14,42 @@ export class ElementService {
 
   constructor(private http: HttpClient) {}
 
-  getElements(): Observable<_Element[]> {
-    return this.http.get<_Element[]>(this.baseApiUrl + 'api/Element');
+  getElements(token: string): Observable<_Element[]> {
+    const reqHeaders = new HttpHeaders({
+      Authorization: ' bearer ' + token,
+      'Content-Type': 'application/json',
+    });
+    return this.http.get<_Element[]>(
+      this.baseApiUrl + 'api/Page/GetAll',
+      { headers: reqHeaders }
+    );
   }
 
-  setElements(element: _Element): Observable<_Element> {
-    return this.http.post<_Element>(this.baseApiUrl + 'api/Element', element);
+  setElements(element: _Element, token: string): Observable<_Element> {
+    const reqHeaders = new HttpHeaders({
+      Authorization: ' bearer ' + token,
+      'Content-Type': 'application/json',
+    });
+    return this.http.post<_Element>(this.baseApiUrl + 'api/', element, {
+      headers: reqHeaders,
+    });
   }
 
-  deleteElements(id: string): Observable<_Element> {
-    return this.http.delete<_Element>(this.baseApiUrl + 'api/Element/' + id);
+  deleteElements(id: string, token: string): Observable<_Element> {
+    const reqHeaders = new HttpHeaders({
+      Authorization: ' bearer ' + token,
+      'Content-Type': 'application/json',
+    });
+    return this.http.delete<_Element>(this.baseApiUrl + 'api/Element/' + id, {
+      headers: reqHeaders,
+    });
   }
 
   authentication(data: any): Observable<_Token> {
-    // 'Authorization': 'token',
-    // console.log(this.apiToken)
     const reqHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
     });
-
-    return this.http.post<_Token>(this.baseApiUrl, data, {
+    return this.http.post<_Token>(this.baseApiUrl + 'api/Login/Token', data, {
       headers: reqHeaders,
     });
   }
