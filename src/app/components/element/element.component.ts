@@ -238,6 +238,7 @@ export class ElementComponent {
   }
 
   getPageSizePx() {
+    //sayfanın boyutunu pixel cinsinden alır
     this._pageHeightPx = this.box.nativeElement.offsetHeight;
     this._pageWidthPx = this.box.nativeElement.offsetWidth;
   }
