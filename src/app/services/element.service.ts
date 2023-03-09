@@ -19,10 +19,9 @@ export class ElementService {
       Authorization: 'bearer ' + token,
       'Content-Type': 'application/json',
     });
-    return this.http.get<_Element[]>(
-      this.baseApiUrl + 'api/PageItem',
-      { headers: reqHeaders }
-    );
+    return this.http.get<_Element[]>(this.baseApiUrl + 'api/PageItem', {
+      headers: reqHeaders,
+    });
   }
 
   setElements(element: _Element, token: string): Observable<_Element> {

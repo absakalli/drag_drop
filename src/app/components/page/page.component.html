@@ -1,0 +1,66 @@
+<label class="cardspan open-button" for="height"
+  >Sayfa Yüksekligi : {{ _pageHeight }}</label
+>
+<label class="cardspan open-button" for="width"
+  >Sayfa Genisligi : {{ _pageWidth }}</label
+>
+<label class="cardspan open-button" for="width"
+  >Sayfa Rengi : {{ _pageColor }}</label
+>
+<button class="open-button" (click)="openPageForm()">Yeni Sayfa</button>
+
+<div class="form-popup" id="setPageForm" [hidden]="_isPageFormHidden">
+  <form class="form-container">
+    <label for="height">Yükseklik</label>
+    <input
+      type="text"
+      placeholder="Cm Cinsinden Giriniz."
+      name="height"
+      [(ngModel)]="_pageHeight"
+    />
+
+    <label for="width">Genislik</label>
+    <input
+      type="text"
+      placeholder="Cm Cinsinden Giriniz."
+      name="width"
+      [(ngModel)]="_pageWidth"
+    />
+
+    <div>
+      <label>Arka Plan Rengi</label><br />
+      <input
+        type="color"
+        name="bgcolor"
+        id="bgcolor"
+        [(ngModel)]="_pageColor"
+      /><br />
+    </div>
+
+    <button
+      type="button"
+      class="btn col-xs-12"
+      (click)="setPageProp()"
+      (click)="getPageSizePx()"
+    >
+      Olustur
+    </button>
+    <button
+      type="button"
+      class="btn cancel col-xs-12"
+      (click)="closePageForm()"
+    >
+      İptal
+    </button>
+  </form>
+</div>
+
+<div
+  #box
+  id="example-boundary"
+  class="example-boundary"
+  [style.--heightpage.cm]="page.pageHeight"
+  [style.--widthpage.cm]="page.pageWidth"
+  [style.background-color]="page.backgroundColor"
+  [style.background-image]="'url(assets/grid.png)'"
+></div>

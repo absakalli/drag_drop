@@ -1,0 +1,7 @@
+.example-boundary {
+  --heightpage: 100vh;
+  --widthpage: 100%;
+  height: var(--heightpage);
+  width: var(--widthpage);
+}
+

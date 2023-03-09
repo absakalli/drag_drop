@@ -55,12 +55,21 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ElementComponent } from './components/element/element.component';
-
+import { ImportComponent } from './components/import/import.component';
+import { ExportComponent } from './components/export/export.component';
+import { WebApiComponent } from './components/web-api/web-api.component';
+import { PageComponent } from './components/page/page.component';
+import { ToPDFComponent } from './components/to-pdf/to-pdf.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ElementComponent
+    ElementComponent,
+    ImportComponent,
+    ExportComponent,
+    WebApiComponent,
+    PageComponent,
+    ToPDFComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +79,7 @@ import { ElementComponent } from './components/element/element.component';
     ReactiveFormsModule,
     HttpClientModule,
     CommonModule,
-    MaterialExampleModule
+    MaterialExampleModule,
   ],
   exports: [
     A11yModule,
@@ -118,6 +127,6 @@ import { ElementComponent } from './components/element/element.component';
     PortalModule,
     ScrollingModule,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
