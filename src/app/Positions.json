@@ -31,7 +31,8 @@
       "spanTop": 0,
       "spanBottom": null,
       "spanRight": 0,
-      "spanLeft": null
+      "spanLeft": null,
+      "textColor": "#0000ff"
     },
     {
       "id": "6b7c24cd-4ac1-41d4-a967-7a32814a5667",
@@ -55,7 +56,8 @@
       "spanTop": null,
       "spanBottom": 10,
       "spanRight": null,
-      "spanLeft": 0
+      "spanLeft": 0,
+      "textColor": "#00ff00"
     },
     {
       "id": "730aba75-fb09-41d7-afc9-3421981c9c03",
@@ -79,7 +81,8 @@
       "spanTop": null,
       "spanBottom": null,
       "spanRight": null,
-      "spanLeft": null
+      "spanLeft": null,
+      "textColor": "#ff0000"
     },
     {
       "id": "286aa656-f1be-4126-9099-e9165093d547",
@@ -103,7 +106,8 @@
       "spanTop": 0,
       "spanBottom": null,
       "spanRight": null,
-      "spanLeft": 0
+      "spanLeft": 0,
+      "textColor": "#000000"
     },
     {
       "id": "0764485c-365b-443f-b8b2-e53defd531f8",
@@ -127,7 +131,8 @@
       "spanTop": null,
       "spanBottom": 10,
       "spanRight": 0,
-      "spanLeft": null
+      "spanLeft": null,
+      "textColor": "#ffffff"
     }
   ]
 }

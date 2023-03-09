@@ -23,10 +23,10 @@
     <div class="card row">
       <div class="card2">
         <label class="cardspan open-button" for="height"
-          >Sayfa Yüksekligi : {{ _heightP }}</label
+          >Sayfa Yüksekligi : {{ _pageHeight }}</label
         >
         <label class="cardspan open-button" for="width"
-          >Sayfa Genisligi : {{ _widthP }}</label
+          >Sayfa Genisligi : {{ _pageWidth }}</label
         >
         <label class="cardspan open-button" for="width"
           >Sayfa Rengi : {{ _bgColorP }}</label
@@ -43,7 +43,7 @@
           type="text"
           placeholder="Cm Cinsinden Giriniz."
           name="height"
-          [(ngModel)]="_heightP"
+          [(ngModel)]="_pageHeight"
         />
 
         <label for="width">Genislik</label>
@@ -51,7 +51,7 @@
           type="text"
           placeholder="Cm Cinsinden Giriniz."
           name="width"
-          [(ngModel)]="_widthP"
+          [(ngModel)]="_pageWidth"
         />
 
         <div>
@@ -64,7 +64,12 @@
           /><br />
         </div>
 
-        <button type="button" class="btn col-xs-12" (click)="setPageProp()">
+        <button
+          type="button"
+          class="btn col-xs-12"
+          (click)="setPageProp()"
+          (click)="getPageSizePx()"
+        >
           Olustur
         </button>
         <button
@@ -112,6 +117,16 @@
           name="span"
           [(ngModel)]="_span"
         />
+
+        <label for="bgcolorText">Yazı Rengi</label><br />
+        <div>
+          <input
+            type="color"
+            name="bgcolorText"
+            id="bgcolor"
+            [(ngModel)]="_textColor"
+          /><br />
+        </div>
 
         <label for="punto">Yazı Boyutu</label>
         <input type="number" name="punto" [(ngModel)]="_punto" />
@@ -284,6 +299,7 @@
           [style.right.px]="element.spanRight"
           [style.bottom.px]="element.spanBottom"
           [style.text-decoration]="element.textDecor"
+          [style.color]="element.textColor"
           >{{ element.span }}</span
         >
         <div class="example-handle" cdkDragHandle></div>

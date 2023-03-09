@@ -14,6 +14,7 @@ export class _Element {
   public spanLeft: any;
   public spanRight: any;
   public spanBottom: any;
+  public textColor: any;
   public layer: any;
   public height: any;
   public width: any;
@@ -53,5 +54,6 @@ export class _Element {
     this.spanBottom = null;
     this.spanLeft = null;
     this.spanRight = null;
+    this.textColor = '#ffffff';
   }
 }

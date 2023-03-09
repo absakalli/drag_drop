@@ -39,8 +39,10 @@ export class ElementComponent {
   //#region Page Var
 
   _bgP: any;
-  _widthP: any;
-  _heightP: any;
+  _pageWidth: any;
+  _pageHeight: any;
+  _pageWidthPx: any;
+  _pageHeightPx: any;
   _bgUrlP: any;
   _bgColorP: any;
   isHiddenP: any;
@@ -64,6 +66,7 @@ export class ElementComponent {
   _bg: any;
   _bgUrl: any;
   _bgColor: any;
+  _textColor: any;
   isHiddenD: any;
   isHiddenID: any;
   isHiddenCD: any;
@@ -107,8 +110,8 @@ export class ElementComponent {
     this.data = new _Data('hseyinsungur@gmail.com', '123456', 1, true);
     this.login();
     this.page = new _Page('29.7', '21', '#460707');
-    this._heightP = this.page.pageHeight;
-    this._widthP = this.page.pageWidth;
+    this._pageHeight = this.page.pageHeight;
+    this._pageWidth = this.page.pageWidth;
     this._bgColorP = this.page.backgroundColor;
     this.elements = [];
     this.isHiddenD = true;
@@ -120,7 +123,7 @@ export class ElementComponent {
   jsPdf() {
     //HTML to PDF
     html2canvas(this.box.nativeElement).then((canvas) => {
-      let PDF = new jsPDF('p', 'cm', [this._heightP, this._widthP]);
+      let PDF = new jsPDF('p', 'cm', [this._pageHeight, this._pageWidth]);
       PDF.addImage(canvas, 'JPEG', 0, 0, 0, 0);
       window.open(PDF.output('bloburl'));
     });
@@ -198,8 +201,8 @@ export class ElementComponent {
     //sayfada bulunan elementleri json dosyası olarak dışarı aktarır
     this.page = Data.Page;
     this._bgColorP = this.page.backgroundColor;
-    this._heightP = this.page.pageHeight;
-    this._widthP = this.page.pageWidth;
+    this._pageHeight = this.page.pageHeight;
+    this._pageWidth = this.page.pageWidth;
     this.elements = [...Data.Elements];
   }
 
@@ -227,11 +230,16 @@ export class ElementComponent {
   setPageProp() {
     //içerisindeki elementleri siler ve girilen değerlerden yeni bir sayfa oluşturur
     this.elements = [];
-    this.page.pageWidth = this._widthP;
-    this.page.pageHeight = this._heightP;
+    this.page.pageWidth = this._pageWidth;
+    this.page.pageHeight = this._pageHeight;
     this.page.backgroundColor = this._bgColorP;
     this.isHiddenP = true;
     this.clearFieldElement();
+  }
+
+  getPageSizePx() {
+    this._pageHeightPx = this.box.nativeElement.offsetHeight;
+    this._pageWidthPx = this.box.nativeElement.offsetWidth;
   }
 
   clearFieldElement() {
@@ -278,6 +286,7 @@ export class ElementComponent {
       element.punto = this._punto;
       element.layer = this._layer;
       element.spanLoc = this._spanLoc;
+      element.textColor = this._textColor;
       // element.bgUrl = 'url(' + this._bgUrl + ')';
       this.setSpanLoc();
       this.setSpanProp();
@@ -309,6 +318,7 @@ export class ElementComponent {
     this._width = this.element.width;
     this._height = this.element.height;
     this._spanLoc = this.element.spanLoc;
+    this._textColor = this.element.textColor;
     this.getSpanProp();
     this.getBG(element);
   }

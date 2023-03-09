@@ -239,7 +239,5 @@ input[type="checkbox"]:checked::after {
 }
 
 #span {
-  color: white;
-  mix-blend-mode: difference;
   position: absolute;
 }
