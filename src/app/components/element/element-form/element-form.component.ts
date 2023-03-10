@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { ElementComponent } from "../element.component";
 
 @Component({
   selector: 'app-element-form',
@@ -9,6 +10,7 @@ export class ElementFormComponent {
   @HostListener('document:keydown.escape') escapeHandle() {
     this._isElmFormHidden = true;
   }
+  elementComponent: ElementComponent;
   _isElmFormHidden: any;
 
   tips = [

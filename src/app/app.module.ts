@@ -60,9 +60,10 @@ import { ExportComponent } from './components/export/export.component';
 import { WebApiComponent } from './components/web-api/web-api.component';
 import { PageComponent } from './components/page/page.component';
 import { ToPDFComponent } from './components/to-pdf/to-pdf.component';
-import { EleementFormComponent } from './components/eleement-form/eleement-form.component';
 import { ElementFormComponent } from './components/element/element-form/element-form.component';
 import { ElementCardComponent } from './components/element/element-card/element-card.component';
+import { PageCardComponent } from './components/page/page-card/page-card.component';
+import { PageFormComponent } from './components/page/page-form/page-form.component';
 
 @NgModule({
   declarations: [
@@ -73,9 +74,11 @@ import { ElementCardComponent } from './components/element/element-card/element-
     WebApiComponent,
     PageComponent,
     ToPDFComponent,
-    EleementFormComponent,
+    ElementFormComponent,
     ElementFormComponent,
     ElementCardComponent,
+    PageCardComponent,
+    PageFormComponent,
   ],
   imports: [
     BrowserModule,

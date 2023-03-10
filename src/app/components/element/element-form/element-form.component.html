@@ -5,7 +5,7 @@
       type="text"
       placeholder="Element içeriğini giriniz."
       name="span"
-      [(ngModel)]="_text"
+      [(ngModel)]="elementComponent._text"
     />
 
     <label for="colorText">Yazı Rengi</label><br />
@@ -14,24 +14,32 @@
         type="color"
         name="colorText"
         id="bgcolor"
-        [(ngModel)]="_textColor"
+        [(ngModel)]="elementComponent._textColor"
       /><br />
     </div>
 
     <label for="punto">Yazı Boyutu</label>
-    <input type="number" name="punto" [(ngModel)]="_punto" />
+    <input type="number" name="punto" [(ngModel)]="elementComponent._punto" />
 
     <div style="text-align: center">
       <div class="col-md-4">
         <label for="italic" style="font-style: italic; font-weight: lighter"
           >İtalik</label
         ><br />
-        <input [(ngModel)]="_isItalic" type="checkbox" name="italic" />
+        <input
+          [(ngModel)]="elementComponent._isItalic"
+          type="checkbox"
+          name="italic"
+        />
       </div>
 
       <div class="col-md-4">
         <label for="bold">Kalın</label><br />
-        <input [(ngModel)]="_isBold" type="checkbox" name="bold" />
+        <input
+          [(ngModel)]="elementComponent._isBold"
+          type="checkbox"
+          name="bold"
+        />
       </div>
 
       <div class="col-md-4">
@@ -40,14 +48,18 @@
           style="text-decoration: underline; font-weight: lighter"
           >Çizili</label
         ><br />
-        <input [(ngModel)]="_isUnderline" type="checkbox" name="underline" />
+        <input
+          [(ngModel)]="elementComponent._isUnderline"
+          type="checkbox"
+          name="underline"
+        />
       </div>
     </div>
 
     <label for="font">Yazı Tipi</label><br />
     <mat-form-field>
       <mat-label>Seçiniz</mat-label>
-      <mat-select [(ngModel)]="_font" name="font">
+      <mat-select [(ngModel)]="elementComponent._font" name="font">
         <mat-option
           *ngFor="let font of fonts"
           [value]="font.value"
@@ -62,7 +74,7 @@
     <label for="spanloc">İçerik Konumu</label><br />
     <mat-form-field>
       <mat-label>Seçiniz</mat-label>
-      <mat-select [(ngModel)]="_textLoc" name="spanloc">
+      <mat-select [(ngModel)]="elementComponent._textLoc" name="spanloc">
         <mat-option *ngFor="let loc of locs" [value]="loc.value" name="spanloc">
           {{ loc.viewValue }}
         </mat-option>
@@ -72,7 +84,7 @@
     <label for="tip">Element Türü</label><br />
     <mat-form-field>
       <mat-label>Seçiniz</mat-label>
-      <mat-select [(ngModel)]="_tip" name="tip">
+      <mat-select [(ngModel)]="elementComponent._tip" name="tip">
         <mat-option *ngFor="let tip of tips" [value]="tip.value" name="tip">
           {{ tip.viewValue }}
         </mat-option>
@@ -84,9 +96,9 @@
       <mat-label>Seçiniz</mat-label>
       <mat-select
         #bg
-        [(value)]="_elementBg"
+        [(value)]="elementComponent._elementBg"
         name="bg"
-        (valueChange)="changeBgType(bg.value)"
+        (valueChange)="elementComponent.changeBgType(bg.value)"
       >
         <mat-option *ngFor="let bg of bgs" [value]="bg.value" name="bg">
           {{ bg.viewValue }}
@@ -94,37 +106,47 @@
       </mat-select> </mat-form-field
     ><br />
 
-    <div [hidden]="_isUrlHidden">
+    <div [hidden]="elementComponent._isUrlHidden">
       <label for="bgurl">Arka Plan Resmi</label>
       <input
         type="url"
         placeholder="Arka Plan URL'sini Ekleyiniz."
         name="bgurl"
-        [(ngModel)]="_bgUrl"
+        [(ngModel)]="elementComponent._bgUrl"
       />
     </div>
 
-    <div [hidden]="_isColorHidden">
+    <div [hidden]="elementComponent._isColorHidden">
       <label>Arka Plan Rengi</label><br />
       <input
         type="color"
         name="bgcolor"
         id="bgcolor"
-        [(ngModel)]="_bgColor"
+        [(ngModel)]="elementComponent._bgColor"
       /><br />
     </div>
 
-    <label for="layer">Element Katmanı : {{ _layer }}</label
+    <label for="layer">Element Katmanı : {{ elementComponent._layer }}</label
     ><br />
-    <button type="button" class="btn col-xs-6" (click)="layerUp()">+</button>
-    <button type="button" class="btn cancel col-xs-6" (click)="layerDown()">
+    <button
+      type="button"
+      class="btn col-xs-6"
+      (click)="elementComponent.layerUp()"
+    >
+      +
+    </button>
+    <button
+      type="button"
+      class="btn cancel col-xs-6"
+      (click)="elementComponent.layerDown()"
+    >
       -</button
     ><br />
 
     <button
       type="button"
       class="btn col-xs-12"
-      (click)="setElementProp($event)"
+      (click)="elementComponent.setElementProp($event)"
     >
       Düzenle</button
     ><br />

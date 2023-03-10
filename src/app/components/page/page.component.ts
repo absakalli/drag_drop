@@ -1,5 +1,6 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ElementComponent } from 'src/app/components/element/element.component';
+import { PageFormComponent } from './page-form/page-form.component';
 import { _Page } from 'src/app/models/page.model';
 
 @Component({
@@ -9,10 +10,8 @@ import { _Page } from 'src/app/models/page.model';
 })
 export class PageComponent {
   @ViewChild('box') public box: ElementRef;
-  @HostListener('document:keydown.escape') escapeHandle() {
-    this._isPageFormHidden = true;
-  }
 
+  pageFormComponent: PageFormComponent;
   elementComponent: ElementComponent;
   page: _Page;
 
@@ -21,24 +20,22 @@ export class PageComponent {
   _pageWidthPx: any;
   _pageHeightPx: any;
   _pageColor: any;
-  _isPageFormHidden: any;
 
   ngOnInit() {
     this.page = new _Page('29.7', '21', '#460707');
+    this.getPageProp();
+  }
+
+  getPageProp() {
     this._pageHeight = this.page.pageHeight;
     this._pageWidth = this.page.pageWidth;
     this._pageColor = this.page.backgroundColor;
-    this._isPageFormHidden = true;
   }
 
-  openPageForm() {
-    //sayfa set formunu açar
-    this._isPageFormHidden = false;
-  }
-
-  closePageForm() {
-    //sayfa set formunu kapar
-    this._isPageFormHidden = true;
+  getPageSizePx() {
+    //sayfanın boyutunu pixel cinsinden alır
+    this._pageHeightPx = this.box.nativeElement.offsetHeight;
+    this._pageWidthPx = this.box.nativeElement.offsetWidth;
   }
 
   setPageProp() {
@@ -47,13 +44,7 @@ export class PageComponent {
     this.page.pageWidth = this._pageWidth;
     this.page.pageHeight = this._pageHeight;
     this.page.backgroundColor = this._pageColor;
-    this._isPageFormHidden = true;
+    this.pageFormComponent.closePageForm();
     this.elementComponent.clearElementField();
-  }
-
-  getPageSizePx() {
-    //sayfanın boyutunu pixel cinsinden alır
-    this._pageHeightPx = this.box.nativeElement.offsetHeight;
-    this._pageWidthPx = this.box.nativeElement.offsetWidth;
   }
 }

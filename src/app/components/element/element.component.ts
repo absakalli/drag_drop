@@ -1,6 +1,4 @@
 import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
-import { _DisposeViewRepeaterStrategy } from '@angular/cdk/collections';
-import { __spreadArray } from 'tslib';
 import { _Element } from 'src/app/models/element.model';
 import { ElementFormComponent } from './element-form/element-form.component';
 

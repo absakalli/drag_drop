@@ -1,0 +1,45 @@
+<div class="form-popup" id="setPageForm" [hidden]="_isPageFormHidden">
+  <form class="form-container">
+    <label for="height">Yükseklik</label>
+    <input
+      type="text"
+      placeholder="Cm Cinsinden Giriniz."
+      name="height"
+      [(ngModel)]="pageComponent._pageHeight"
+    />
+
+    <label for="width">Genislik</label>
+    <input
+      type="text"
+      placeholder="Cm Cinsinden Giriniz."
+      name="width"
+      [(ngModel)]="pageComponent._pageWidth"
+    />
+
+    <div>
+      <label>Arka Plan Rengi</label><br />
+      <input
+        type="color"
+        name="bgcolor"
+        id="bgcolor"
+        [(ngModel)]="pageComponent._pageColor"
+      /><br />
+    </div>
+
+    <button
+      type="button"
+      class="btn col-xs-12"
+      (click)="pageComponent.setPageProp()"
+      (click)="pageComponent.getPageSizePx()"
+    >
+      Olustur
+    </button>
+    <button
+      type="button"
+      class="btn cancel col-xs-12"
+      (click)="closePageForm()"
+    >
+      İptal
+    </button>
+  </form>
+</div>
