@@ -10,7 +10,6 @@ export class PageFormComponent {
   @HostListener('document:keydown.escape') escapeHandle() {
     this._isPageFormHidden = true;
   }
-
   pageComponent: PageComponent;
   _isPageFormHidden: any;
 

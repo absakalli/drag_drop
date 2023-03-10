@@ -11,8 +11,8 @@ export class ElementComponent {
   @ViewChildren('elements') _elements: QueryList<ElementRef>;
 
   elementFormComponent: ElementFormComponent;
-  public elements: _Element[];
-  public element: _Element;
+  elements: _Element[];
+  element: _Element;
 
   _id: any;
   _tip: any;

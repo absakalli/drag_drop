@@ -10,9 +10,8 @@ import { _Page } from 'src/app/models/page.model';
 })
 export class PageComponent {
   @ViewChild('box') public box: ElementRef;
-
-  pageFormComponent: PageFormComponent;
   elementComponent: ElementComponent;
+  pageFormComponent: PageFormComponent;
   page: _Page;
 
   _pageWidth: any;
