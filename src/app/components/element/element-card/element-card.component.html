@@ -1,15 +1,33 @@
-<button class="open-button" (click)="elementComponent.addElement()">Add Element</button>
+<button class="open-button" (click)="elementComponent.addElement()">
+  Add Element
+</button>
 
-<label class="cardspan open-button" for="id">ID : {{ elementComponent._id }}</label>
-<label class="cardspan open-button" for="span">Icerik : {{ elementComponent._text }}</label>
-<label class="cardspan open-button" for="bg"
-  >Background : {{ elementComponent._bgColor }}<br />{{ elementComponent._bgUrl }}</label
+<label class="cardspan open-button" for="id"
+  >ID : {{ elementComponent._id }}</label
 >
-<label class="cardspan open-button" for="layer">Katman : {{ elementComponent._layer }}</label>
+<label class="cardspan open-button" for="span"
+  >Icerik : {{ elementComponent._text }}</label
+>
+<label class="cardspan open-button" for="bg"
+  >Background : {{ elementComponent._bgColor }}<br />{{
+    elementComponent._bgUrl
+  }}</label
+>
+<label class="cardspan open-button" for="layer"
+  >Katman : {{ elementComponent._layer }}</label
+>
 <label class="cardspan open-button" for="height"
   >Yükseklik : {{ elementComponent._height }}</label
 >
-<label class="cardspan open-button" for="width">Genislik : {{ elementComponent._width }}</label>
-<label class="cardspan open-button" for="tip">Tip : {{ elementComponent._tip }}</label>
-<button class="open-button" (click)="elementFormComponent.openElementForm()">Duzenle</button>
-<button class="open-button" (click)="elementComponent.removeElement()">Kaldir</button>
+<label class="cardspan open-button" for="width"
+  >Genislik : {{ elementComponent._width }}</label
+>
+<label class="cardspan open-button" for="tip"
+  >Tip : {{ elementComponent._tip }}</label
+>
+<button class="open-button" (click)="elementFormComponent.openElementForm()">
+  Duzenle
+</button>
+<button class="open-button" (click)="elementComponent.removeElement()">
+  Kaldir
+</button>

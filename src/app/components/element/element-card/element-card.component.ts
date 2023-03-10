@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ElementComponent } from '../element.component';
-import { ElementFormComponent } from "../element-form/element-form.component";
+import { ElementFormComponent } from '../element-form/element-form.component';
 
 @Component({
   selector: 'app-element-card',
