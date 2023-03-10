@@ -1,0 +1,139 @@
+<div class="form-popup" id="setDivForm" [hidden]="_isElmFormHidden">
+  <form class="form-container">
+    <label for="span">İçerik</label>
+    <input
+      type="text"
+      placeholder="Element içeriğini giriniz."
+      name="span"
+      [(ngModel)]="_text"
+    />
+
+    <label for="colorText">Yazı Rengi</label><br />
+    <div>
+      <input
+        type="color"
+        name="colorText"
+        id="bgcolor"
+        [(ngModel)]="_textColor"
+      /><br />
+    </div>
+
+    <label for="punto">Yazı Boyutu</label>
+    <input type="number" name="punto" [(ngModel)]="_punto" />
+
+    <div style="text-align: center">
+      <div class="col-md-4">
+        <label for="italic" style="font-style: italic; font-weight: lighter"
+          >İtalik</label
+        ><br />
+        <input [(ngModel)]="_isItalic" type="checkbox" name="italic" />
+      </div>
+
+      <div class="col-md-4">
+        <label for="bold">Kalın</label><br />
+        <input [(ngModel)]="_isBold" type="checkbox" name="bold" />
+      </div>
+
+      <div class="col-md-4">
+        <label
+          for="underline"
+          style="text-decoration: underline; font-weight: lighter"
+          >Çizili</label
+        ><br />
+        <input [(ngModel)]="_isUnderline" type="checkbox" name="underline" />
+      </div>
+    </div>
+
+    <label for="font">Yazı Tipi</label><br />
+    <mat-form-field>
+      <mat-label>Seçiniz</mat-label>
+      <mat-select [(ngModel)]="_font" name="font">
+        <mat-option
+          *ngFor="let font of fonts"
+          [value]="font.value"
+          [style.font-family]="font.value"
+          name="font"
+        >
+          {{ font.viewValue }}
+        </mat-option>
+      </mat-select> </mat-form-field
+    ><br />
+
+    <label for="spanloc">İçerik Konumu</label><br />
+    <mat-form-field>
+      <mat-label>Seçiniz</mat-label>
+      <mat-select [(ngModel)]="_textLoc" name="spanloc">
+        <mat-option *ngFor="let loc of locs" [value]="loc.value" name="spanloc">
+          {{ loc.viewValue }}
+        </mat-option>
+      </mat-select> </mat-form-field
+    ><br />
+
+    <label for="tip">Element Türü</label><br />
+    <mat-form-field>
+      <mat-label>Seçiniz</mat-label>
+      <mat-select [(ngModel)]="_tip" name="tip">
+        <mat-option *ngFor="let tip of tips" [value]="tip.value" name="tip">
+          {{ tip.viewValue }}
+        </mat-option>
+      </mat-select> </mat-form-field
+    ><br />
+
+    <label for="bg">Arka Plan</label><br />
+    <mat-form-field>
+      <mat-label>Seçiniz</mat-label>
+      <mat-select
+        #bg
+        [(value)]="_elementBg"
+        name="bg"
+        (valueChange)="changeBgType(bg.value)"
+      >
+        <mat-option *ngFor="let bg of bgs" [value]="bg.value" name="bg">
+          {{ bg.viewValue }}
+        </mat-option>
+      </mat-select> </mat-form-field
+    ><br />
+
+    <div [hidden]="_isUrlHidden">
+      <label for="bgurl">Arka Plan Resmi</label>
+      <input
+        type="url"
+        placeholder="Arka Plan URL'sini Ekleyiniz."
+        name="bgurl"
+        [(ngModel)]="_bgUrl"
+      />
+    </div>
+
+    <div [hidden]="_isColorHidden">
+      <label>Arka Plan Rengi</label><br />
+      <input
+        type="color"
+        name="bgcolor"
+        id="bgcolor"
+        [(ngModel)]="_bgColor"
+      /><br />
+    </div>
+
+    <label for="layer">Element Katmanı : {{ _layer }}</label
+    ><br />
+    <button type="button" class="btn col-xs-6" (click)="layerUp()">+</button>
+    <button type="button" class="btn cancel col-xs-6" (click)="layerDown()">
+      -</button
+    ><br />
+
+    <button
+      type="button"
+      class="btn col-xs-12"
+      (click)="setElementProp($event)"
+    >
+      Düzenle</button
+    ><br />
+    <button
+      type="button"
+      class="btn cancel col-xs-12"
+      (click)="closeElementForm()"
+    >
+      İptal
+    </button>
+  </form>
+</div>

@@ -1,14 +1,8 @@
-import {
-  Component,
-  ElementRef,
-  HostListener,
-  QueryList,
-  ViewChild,
-  ViewChildren,
-} from '@angular/core';
+import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
 import { _DisposeViewRepeaterStrategy } from '@angular/cdk/collections';
 import { __spreadArray } from 'tslib';
 import { _Element } from 'src/app/models/element.model';
+import { ElementFormComponent } from './element-form/element-form.component';
 
 @Component({
   selector: 'app-element',
@@ -17,16 +11,10 @@ import { _Element } from 'src/app/models/element.model';
 })
 export class ElementComponent {
   @ViewChildren('elements') _elements: QueryList<ElementRef>;
-  @HostListener('document:keydown.escape') escapeHandle() {
-    this._isElmFormHidden = true;
-  }
 
+  elementFormComponent: ElementFormComponent;
   public elements: _Element[];
   public element: _Element;
-  //#region Page Var
-
-  //#endregion
-  //#region Element Var
 
   _id: any;
   _tip: any;
@@ -45,46 +33,11 @@ export class ElementComponent {
   _bgUrl: any;
   _bgColor: any;
   _textColor: any;
-  _isElmFormHidden: any;
   _isUrlHidden: any;
   _isColorHidden: any;
-  tips = [
-    { value: 'Yazi', viewValue: 'Yazi' },
-    { value: 'Fotoğraf', viewValue: 'Fotoğraf' },
-    { value: 'Barkod', viewValue: 'Barkod' },
-  ];
-  locs = [
-    { value: 'SagUst', viewValue: 'Sağ Üst' },
-    { value: 'SagAlt', viewValue: 'Sağ Alt' },
-    { value: 'SolUst', viewValue: 'Sol Üst' },
-    { value: 'SolAlt', viewValue: 'Sol Alt' },
-    { value: 'Orta', viewValue: 'Orta' },
-  ];
-  bgs = [
-    { value: 'color', viewValue: 'Renk' },
-    { value: 'img', viewValue: 'Fotoğraf' },
-    { value: 'trans', viewValue: 'Transparan' },
-  ];
-  fonts = [
-    { value: 'Arial', viewValue: 'Arial' },
-    { value: 'Verdana', viewValue: 'Verdana' },
-    { value: 'Tahoma', viewValue: 'Tahoma' },
-    { value: 'Trebuchet MS', viewValue: 'Trebuchet MS' },
-    { value: 'Times New Roman', viewValue: 'Times New Roman' },
-    { value: 'Georgia', viewValue: 'Georgia' },
-    { value: 'Garamond', viewValue: 'Garamond' },
-    { value: 'Courier New', viewValue: 'Courier New' },
-    { value: 'Brush Script MT', viewValue: 'Brush Script MT' },
-    { value: 'Papyrus', viewValue: 'Papyrus' },
-  ];
-
-  //#endregion
-
-  //#region Element işlemleri
 
   ngOnInit() {
     this.elements = [];
-    this._isElmFormHidden = true;
     this._isUrlHidden = true;
     this._isColorHidden = true;
   }
@@ -129,28 +82,11 @@ export class ElementComponent {
     this._isUnderline = false;
   }
 
-  //#endregion
-  //#region Page ayarları ve özellikleri get set
-
-  //#endregion
-  //#region Element ayarları ve özellikleri get set
-
-  openElementForm() {
-    //element set formunu açar
-    this._isElmFormHidden = false;
-    return false;
-  }
-
-  closeElementForm() {
-    //element set formunu kapar
-    this._isElmFormHidden = true;
-  }
-
   setElementProp(element: any) {
     //düzenle butonuna basıldığında girilen değerleri elemente atar
     if (this._id != undefined || null || '') {
       element = this.element;
-      this._isElmFormHidden = true;
+      this.elementFormComponent._isElmFormHidden = true;
       element.tip = this._tip;
       element.text = this._text;
       element.font = this._font;
@@ -361,8 +297,6 @@ export class ElementComponent {
         break;
     }
   }
-
-  //#endregion
 
   //#endregion
 }
