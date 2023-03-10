@@ -137,5 +137,17 @@ import { PageFormComponent } from './components/page/page-form/page-form.compone
     ScrollingModule,
   ],
   bootstrap: [AppComponent],
+  providers: [
+    ElementCardComponent,
+    ElementFormComponent,
+    ElementComponent,
+    ExportComponent,
+    ImportComponent,
+    PageCardComponent,
+    PageFormComponent,
+    PageComponent,
+    ToPDFComponent,
+    WebApiComponent,
+  ],
 })
 export class AppModule {}

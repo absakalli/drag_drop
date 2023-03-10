@@ -84,7 +84,6 @@ export class ElementComponent {
     //düzenle butonuna basıldığında girilen değerleri elemente atar
     if (this._id != undefined || null || '') {
       element = this.element;
-      this.elementFormComponent._isElmFormHidden = true;
       element.tip = this._tip;
       element.text = this._text;
       element.font = this._font;
@@ -99,6 +98,7 @@ export class ElementComponent {
     } else {
       alert('Lütfen düzenlemek istedğiniz elementi seçiniz.');
     }
+    this.elementFormComponent.closeElementForm();
   }
 
   getElementProp(element: any, i: any) {
