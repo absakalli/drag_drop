@@ -9,7 +9,7 @@ import { _Token } from '../models/token.model';
 @Injectable({
   providedIn: 'root',
 })
-export class ElementService {
+export class WebApiService {
   baseApiUrl: string = environment.baseApiUrl;
 
   constructor(private http: HttpClient) {}

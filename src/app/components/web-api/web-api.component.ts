@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { _Data } from 'src/app/models/data.model';
 import { _Token } from 'src/app/models/token.model';
-import { ElementService } from 'src/app/services/element.service';
+import { WebApiService } from 'src/app/services/web-api.service';
 import { ElementComponent } from 'src/app/components/element/element.component';
 
 @Component({
@@ -14,7 +14,7 @@ export class WebApiComponent {
   token: _Token;
   data: _Data;
 
-  constructor(private service: ElementService) {}
+  constructor(private service: WebApiService) {}
 
   ngOnInit() {
     this.data = new _Data('hseyinsungur@gmail.com', '123456', 1, true);
