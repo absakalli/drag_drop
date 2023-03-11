@@ -9,7 +9,7 @@ import { _Page } from 'src/app/models/page.model';
   styleUrls: ['./page.component.css'],
 })
 export class PageComponent implements OnInit {
-  @ViewChild('box') box: ElementRef;
+  @ViewChild('box') box: ElementRef;  
   elementComponent = new ElementComponent();
   pageFormComponent: PageFormComponent;
   page: _Page;
@@ -26,9 +26,7 @@ export class PageComponent implements OnInit {
   }
 
   ngOnInit() {
-    let pageFormComponent = new PageFormComponent();
-    this.pageFormComponent = pageFormComponent;
-    this.getPageProp();
+    this.pageFormComponent = new PageFormComponent();
   }
 
   getPageProp() {

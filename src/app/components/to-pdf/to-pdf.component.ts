@@ -9,7 +9,7 @@ import { PageComponent } from 'src/app/components/page/page.component';
   styleUrls: ['./to-pdf.component.css'],
 })
 export class ToPDFComponent {
-  pageComponent: PageComponent;
+  pageComponent = new PageComponent();
 
   jsPdf() {
     //HTML to PDF
