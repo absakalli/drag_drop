@@ -1,4 +1,10 @@
-import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  QueryList,
+  ViewChildren,
+  OnInit,
+} from '@angular/core';
 import { _Element } from 'src/app/models/element.model';
 import { ElementFormComponent } from './element-form/element-form.component';
 
@@ -7,9 +13,8 @@ import { ElementFormComponent } from './element-form/element-form.component';
   templateUrl: './element.component.html',
   styleUrls: ['./element.component.css'],
 })
-export class ElementComponent {
+export class ElementComponent implements OnInit {
   @ViewChildren('elements') _elements: QueryList<ElementRef>;
-
   elementFormComponent: ElementFormComponent;
   elements: _Element[];
   element: _Element;
@@ -35,6 +40,8 @@ export class ElementComponent {
   _isColorHidden: any;
 
   ngOnInit() {
+    let elementFormComponent = new ElementFormComponent();
+    this.elementFormComponent = elementFormComponent;
     this.elements = [];
     this._isUrlHidden = true;
     this._isColorHidden = true;

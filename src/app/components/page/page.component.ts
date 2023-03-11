@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { ElementComponent } from 'src/app/components/element/element.component';
 import { PageFormComponent } from './page-form/page-form.component';
 import { _Page } from 'src/app/models/page.model';
@@ -8,9 +8,9 @@ import { _Page } from 'src/app/models/page.model';
   templateUrl: './page.component.html',
   styleUrls: ['./page.component.css'],
 })
-export class PageComponent {
-  @ViewChild('box') public box: ElementRef;
-  elementComponent: ElementComponent;
+export class PageComponent implements OnInit {
+  @ViewChild('box') box: ElementRef;
+  elementComponent = new ElementComponent();
   pageFormComponent: PageFormComponent;
   page: _Page;
 
@@ -20,8 +20,14 @@ export class PageComponent {
   _pageHeightPx: any;
   _pageColor: any;
 
-  ngOnInit() {
+  constructor() {
     this.page = new _Page('29.7', '21', '#460707');
+    this.getPageProp();
+  }
+
+  ngOnInit() {
+    let pageFormComponent = new PageFormComponent();
+    this.pageFormComponent = pageFormComponent;
     this.getPageProp();
   }
 

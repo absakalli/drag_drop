@@ -10,7 +10,7 @@ export class ElementFormComponent {
   @HostListener('document:keydown.escape') escapeHandle() {
     this._isElmFormHidden = true;
   }
-  elementComponent: ElementComponent;
+  elementComponent = new ElementComponent();
   _isElmFormHidden: any;
 
   tips = [
@@ -43,7 +43,7 @@ export class ElementFormComponent {
     { value: 'Papyrus', viewValue: 'Papyrus' },
   ];
 
-  ngOnInit() {
+  constructor() {
     this._isElmFormHidden = true;
   }
 

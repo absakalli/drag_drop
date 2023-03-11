@@ -10,10 +10,10 @@ export class PageFormComponent {
   @HostListener('document:keydown.escape') escapeHandle() {
     this._isPageFormHidden = true;
   }
-  pageComponent: PageComponent;
+  pageComponent = new PageComponent();
   _isPageFormHidden: any;
 
-  ngOnInit() {
+  constructor() {
     this._isPageFormHidden = true;
   }
 

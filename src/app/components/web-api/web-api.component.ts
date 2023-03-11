@@ -10,7 +10,7 @@ import { ElementComponent } from 'src/app/components/element/element.component';
   styleUrls: ['./web-api.component.css'],
 })
 export class WebApiComponent {
-  elementComponent: ElementComponent;
+  elementComponent = new ElementComponent();
   token: _Token;
   data: _Data;
 

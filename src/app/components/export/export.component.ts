@@ -9,8 +9,8 @@ import { PageComponent } from 'src/app/components/page/page.component';
   styleUrls: ['./export.component.css'],
 })
 export class ExportComponent {
-  elementComponent: ElementComponent;
-  pageComponent: PageComponent;
+  elementComponent = new ElementComponent();
+  pageComponent = new PageComponent();
 
   export() {
     //json dosyasındaki elementleri içeri aktarır

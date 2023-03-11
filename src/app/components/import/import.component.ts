@@ -9,8 +9,8 @@ import Data from '../../Positions.json';
   styleUrls: ['./import.component.css'],
 })
 export class ImportComponent {
-  elementComponent: ElementComponent;
-  pageComponent: PageComponent;
+  elementComponent = new ElementComponent();
+  pageComponent = new PageComponent();
 
   import() {
     //sayfada bulunan elementleri json dosyası olarak dışarı aktarır

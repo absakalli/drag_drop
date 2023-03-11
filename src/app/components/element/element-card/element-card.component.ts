@@ -8,6 +8,6 @@ import { ElementFormComponent } from '../element-form/element-form.component';
   styleUrls: ['./element-card.component.css'],
 })
 export class ElementCardComponent {
-  elementComponent: ElementComponent;
-  elementFormComponent: ElementFormComponent;
+  elementComponent = new ElementComponent();
+  elementFormComponent = new ElementFormComponent();
 }

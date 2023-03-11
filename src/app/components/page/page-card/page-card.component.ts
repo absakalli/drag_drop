@@ -8,6 +8,6 @@ import { PageComponent } from '../page.component';
   styleUrls: ['./page-card.component.css'],
 })
 export class PageCardComponent {
-  pageFormComponent: PageFormComponent;
-  pageComponent: PageComponent;
+  pageComponent = new PageComponent();
+  pageFormComponent = new PageFormComponent();
 }
