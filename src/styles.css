@@ -68,10 +68,10 @@ label {
 /*#region Form CSS*/
 
 .form-popup {
-  position: absolute;
+  position: fixed;
   overflow: auto;
   width: inherit;
-  min-height: 100%;
+  height: 100%;
   top: 0px;
   left: 0px;
   background-color: white;
