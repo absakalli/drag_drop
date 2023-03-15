@@ -1,11 +1,11 @@
-<div class="form-popup" id="setDivForm" [hidden]="_isElmFormHidden">
+<div class="form-popup" id="setDivForm" [hidden]="elmServices.isHidden">
   <form class="form-container">
     <label for="span">İçerik</label>
     <input
       type="text"
       placeholder="Element içeriğini giriniz."
       name="span"
-      [(ngModel)]="elementComponent._text"
+      [(ngModel)]="elmServices._text"
     />
 
     <label for="colorText">Yazı Rengi</label><br />
@@ -14,12 +14,12 @@
         type="color"
         name="colorText"
         id="bgcolor"
-        [(ngModel)]="elementComponent._textColor"
+        [(ngModel)]="elmServices._textColor"
       /><br />
     </div>
 
     <label for="punto">Yazı Boyutu</label>
-    <input type="number" name="punto" [(ngModel)]="elementComponent._punto" />
+    <input type="number" name="punto" [(ngModel)]="elmServices._punto" />
 
     <div style="text-align: center">
       <div class="col-md-4">
@@ -27,7 +27,7 @@
           >İtalik</label
         ><br />
         <input
-          [(ngModel)]="elementComponent._isItalic"
+          [(ngModel)]="elmServices._isItalic"
           type="checkbox"
           name="italic"
         />
@@ -35,11 +35,7 @@
 
       <div class="col-md-4">
         <label for="bold">Kalın</label><br />
-        <input
-          [(ngModel)]="elementComponent._isBold"
-          type="checkbox"
-          name="bold"
-        />
+        <input [(ngModel)]="elmServices._isBold" type="checkbox" name="bold" />
       </div>
 
       <div class="col-md-4">
@@ -49,7 +45,7 @@
           >Çizili</label
         ><br />
         <input
-          [(ngModel)]="elementComponent._isUnderline"
+          [(ngModel)]="elmServices._isUnderline"
           type="checkbox"
           name="underline"
         />
@@ -59,7 +55,7 @@
     <label for="font">Yazı Tipi</label><br />
     <mat-form-field>
       <mat-label>Seçiniz</mat-label>
-      <mat-select [(ngModel)]="elementComponent._font" name="font">
+      <mat-select [(ngModel)]="elmServices._font" name="font">
         <mat-option
           *ngFor="let font of fonts"
           [value]="font.value"
@@ -74,7 +70,7 @@
     <label for="spanloc">İçerik Konumu</label><br />
     <mat-form-field>
       <mat-label>Seçiniz</mat-label>
-      <mat-select [(ngModel)]="elementComponent._textLoc" name="spanloc">
+      <mat-select [(ngModel)]="elmServices._textLoc" name="spanloc">
         <mat-option *ngFor="let loc of locs" [value]="loc.value" name="spanloc">
           {{ loc.viewValue }}
         </mat-option>
@@ -84,7 +80,7 @@
     <label for="tip">Element Türü</label><br />
     <mat-form-field>
       <mat-label>Seçiniz</mat-label>
-      <mat-select [(ngModel)]="elementComponent._tip" name="tip">
+      <mat-select [(ngModel)]="elmServices._tip" name="tip">
         <mat-option *ngFor="let tip of tips" [value]="tip.value" name="tip">
           {{ tip.viewValue }}
         </mat-option>
@@ -96,9 +92,9 @@
       <mat-label>Seçiniz</mat-label>
       <mat-select
         #bg
-        [(value)]="elementComponent._elementBg"
+        [(value)]="elmServices._elementBg"
         name="bg"
-        (valueChange)="elementComponent.changeBgType(bg.value)"
+        (valueChange)="changeBgType(bg.value)"
       >
         <mat-option *ngFor="let bg of bgs" [value]="bg.value" name="bg">
           {{ bg.viewValue }}
@@ -106,54 +102,44 @@
       </mat-select> </mat-form-field
     ><br />
 
-    <div [hidden]="elementComponent._isUrlHidden">
+    <div [hidden]="elmServices._isUrlHidden">
       <label for="bgurl">Arka Plan Resmi</label>
       <input
         type="url"
         placeholder="Arka Plan URL'sini Ekleyiniz."
         name="bgurl"
-        [(ngModel)]="elementComponent._bgUrl"
+        [(ngModel)]="elmServices._bgUrl"
       />
     </div>
 
-    <div [hidden]="elementComponent._isColorHidden">
+    <div [hidden]="elmServices._isColorHidden">
       <label>Arka Plan Rengi</label><br />
       <input
         type="color"
         name="bgcolor"
         id="bgcolor"
-        [(ngModel)]="elementComponent._bgColor"
+        [(ngModel)]="elmServices._bgColor"
       /><br />
     </div>
 
-    <label for="layer">Element Katmanı : {{ elementComponent._layer }}</label
+    <label for="layer">Element Katmanı : {{ elmServices._layer }}</label
     ><br />
-    <button
-      type="button"
-      class="btn col-xs-6"
-      (click)="elementComponent.layerUp()"
-    >
-      +
-    </button>
-    <button
-      type="button"
-      class="btn cancel col-xs-6"
-      (click)="elementComponent.layerDown()"
-    >
+    <button type="button" class="btn col-xs-6" (click)="layerUp()">+</button>
+    <button type="button" class="btn cancel col-xs-6" (click)="layerDown()">
       -</button
     ><br />
 
     <button
       type="button"
       class="btn col-xs-12"
-      (click)="elementComponent.setElementProp($event)"
+      (click)="setElmProp(elmServices.element)"
     >
       Düzenle</button
     ><br />
     <button
       type="button"
       class="btn cancel col-xs-12"
-      (click)="closeElementForm()"
+      (click)="elmServices.isHidden = true"
     >
       İptal
     </button>

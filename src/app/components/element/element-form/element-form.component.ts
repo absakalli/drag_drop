@@ -1,5 +1,5 @@
-import { Component, HostListener } from '@angular/core';
-import { ElementComponent } from '../element.component';
+import { Component } from '@angular/core';
+import { ElementService } from 'src/app/services/element.service';
 
 @Component({
   selector: 'app-element-form',
@@ -7,12 +7,6 @@ import { ElementComponent } from '../element.component';
   styleUrls: ['./element-form.component.css'],
 })
 export class ElementFormComponent {
-  @HostListener('document:keydown.escape') escapeHandle() {
-    this._isElmFormHidden = true;
-  }
-  elementComponent = new ElementComponent();
-  _isElmFormHidden: any;
-
   tips = [
     { value: 'Yazi', viewValue: 'Yazi' },
     { value: 'Fotoğraf', viewValue: 'Fotoğraf' },
@@ -43,18 +37,140 @@ export class ElementFormComponent {
     { value: 'Papyrus', viewValue: 'Papyrus' },
   ];
 
-  constructor() {
-    this._isElmFormHidden = true;
+  constructor(public elmServices: ElementService) {}
+
+  setElmProp(element: any) {
+    //düzenle butonuna basıldığında girilen değerleri elemente atar
+    element = this.elmServices.element;
+    element.tip = this.elmServices._tip;
+    element.text = this.elmServices._text;
+    element.font = this.elmServices._font;
+    element.punto = this.elmServices._punto;
+    element.layer = this.elmServices._layer;
+    element.textLoc = this.elmServices._textLoc;
+    element.textColor = this.elmServices._textColor;
+    this.setTextLoc();
+    this.setTextProp();
+    this.setBgProp(element);
+    this.elmServices.isHidden = true;
   }
 
-  openElementForm() {
-    //element set formunu açar
-    this._isElmFormHidden = false;
-    return false;
+  layerUp() {
+    //elementin katmanını arttırır
+    this.elmServices._layer = parseInt(this.elmServices._layer + 1);
   }
 
-  closeElementForm() {
-    //element set formunu kapar
-    this._isElmFormHidden = true;
+  layerDown() {
+    //elementin katmanını azaltır
+    if (this.elmServices._layer > 0) {
+      this.elmServices._layer = this.elmServices._layer - 1;
+    } else {
+      alert("Element katmanı 0'dan küçük olamaz.");
+      return;
+    }
+  }
+
+  setTextLoc() {
+    //tıklanan elementin içeriğini seçilen konuma taşır
+    switch (this.elmServices._textLoc) {
+      case 'SagUst':
+        this.elmServices.element.textTop = 10;
+        this.elmServices.element.textLeft = null;
+        this.elmServices.element.textRight = 0;
+        this.elmServices.element.textBottom = null;
+        break;
+      case 'SagAlt':
+        this.elmServices.element.textTop = null;
+        this.elmServices.element.textLeft = null;
+        this.elmServices.element.textRight = 0;
+        this.elmServices.element.textBottom = 10;
+        break;
+      case 'SolUst':
+        this.elmServices.element.textTop = 10;
+        this.elmServices.element.textLeft = 0;
+        this.elmServices.element.textRight = null;
+        this.elmServices.element.textBottom = null;
+        break;
+      case 'SolAlt':
+        this.elmServices.element.textTop = null;
+        this.elmServices.element.textLeft = 0;
+        this.elmServices.element.textRight = null;
+        this.elmServices.element.textBottom = 10;
+        break;
+      case 'Orta':
+        this.elmServices.element.textTop = null;
+        this.elmServices.element.textLeft = null;
+        this.elmServices.element.textRight = null;
+        this.elmServices.element.textBottom = null;
+        break;
+      default:
+        break;
+    }
+  }
+
+  setTextProp() {
+    //element içeriğinin özelliklerini ayarlar
+    if (this.elmServices._isBold) {
+      this.elmServices.element.textWeight = 'bold';
+    } else {
+      this.elmServices.element.textWeight = '';
+    }
+    if (this.elmServices._isItalic) {
+      this.elmServices.element.textStyle = 'italic';
+    } else {
+      this.elmServices.element.textStyle = '';
+    }
+    if (this.elmServices._isUnderline) {
+      this.elmServices.element.textDecor = 'underline';
+    } else {
+      this.elmServices.element.textDecor = '';
+    }
+  }
+
+  changeBgType(bgType: any) {
+    //elementin arkaplan şeklini değiştirdiğine uygun alanın görünürlüğünü açar
+    switch (bgType) {
+      case 'img':
+        this.elmServices._isUrlHidden = false;
+        this.elmServices._isColorHidden = true;
+        break;
+      case 'color':
+        this.elmServices._isColorHidden = false;
+        this.elmServices._isUrlHidden = true;
+        break;
+      case 'trans':
+        this.elmServices._isColorHidden = true;
+        this.elmServices._isUrlHidden = true;
+        break;
+      default:
+        break;
+    }
+  }
+
+  setBgProp(element: any) {
+    //elementin arkaplanını seçilen içerik olarak değiştirir
+    element.bg = this.elmServices._elementBg;
+    switch (this.elmServices._elementBg) {
+      case 'img':
+        element.bgUrl = this.elmServices._bgUrl;
+        element.bgColor = '#00000000';
+        this.elmServices._bgColor = '';
+        this.elmServices._bgUrl = element.bgUrl;
+        break;
+      case 'color':
+        element.bgColor = this.elmServices._bgColor;
+        element.bgUrl = '';
+        this.elmServices._bgUrl = '';
+        this.elmServices._bgColor = element.bgColor;
+        break;
+      case 'trans':
+        element.bgColor = '#00000000';
+        element.bgUrl = '';
+        this.elmServices._bgUrl = '';
+        this.elmServices._bgColor = 'Transparan';
+        break;
+      default:
+        break;
+    }
   }
 }
