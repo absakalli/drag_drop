@@ -7,7 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
 
-import { MaterialExampleModule } from 'src/materail.module';
+import { MaterialExampleModule } from 'src/material.module';
 import { AppComponent } from './app.component';
 import { ElementComponent } from './components/element/element.component';
 import { ElementFormComponent } from './components/element/element-form/element-form.component';

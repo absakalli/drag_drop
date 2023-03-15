@@ -24,7 +24,7 @@ export class PageComponent {
     this.pageServices._pageColor = this.pageServices.page.backgroundColor;
   }
 
-  setPageSizePx() {
+  getPageSizePx() {
     //sayfanın boyutunu pixel cinsinden alır
     this.pageServices._pageHeightPx = this.box.nativeElement.offsetHeight;
     this.pageServices._pageWidthPx = this.box.nativeElement.offsetWidth;
