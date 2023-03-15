@@ -6,6 +6,7 @@
   *ngFor="let element of elmServices.elements; let i = index"
   class="example-box"
   cdkDragBoundary=".example-boundary"
+  cdkDrag
   [style.z-index]="element.layer"
   [style.background]="element.bgColor"
   [style.transform]="'translate(' + element.left + 'px, ' + element.top + 'px)'"

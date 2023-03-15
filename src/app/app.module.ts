@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatNativeDateModule } from '@angular/material/core';
 
+import { MaterialExampleModule } from 'src/materail.module';
 import { AppComponent } from './app.component';
 import { ElementComponent } from './components/element/element.component';
 import { ElementFormComponent } from './components/element/element-form/element-form.component';
@@ -39,6 +41,9 @@ import { WebApiComponent } from './components/web-api/web-api.component';
     HttpClientModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    MaterialExampleModule,
   ],
   bootstrap: [AppComponent],
 })
