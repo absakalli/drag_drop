@@ -17,13 +17,13 @@ export class ToPDFComponent {
 
   jsPdf() {
     //HTML to PDF
-    html2canvas(this.pageServices.box.nativeElement).then((canvas) => {
-      let PDF = new jsPDF('p', 'cm', [
-        this.pageServices._pageHeight,
-        this.pageServices._pageWidth,
-      ]);
-      PDF.addImage(canvas, 'JPEG', 0, 0, 0, 0);
-      window.open(PDF.output('bloburl'));
-    });
+    // html2canvas(this.box.nativeElement).then((canvas) => {
+    //   let PDF = new jsPDF('p', 'cm', [
+    //     this.pageServices._pageHeight,
+    //     this.pageServices._pageWidth,
+    //   ]);
+    //   PDF.addImage(canvas, 'JPEG', 0, 0, 0, 0);
+    //   window.open(PDF.output('bloburl'));
+    // });
   }
 }

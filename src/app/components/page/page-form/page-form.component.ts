@@ -1,5 +1,6 @@
-import { Component, HostListener } from '@angular/core';
-import { PageComponent } from '../page.component';
+import { Component } from '@angular/core';
+import { ElementService } from 'src/app/services/element.service';
+import { PageService } from 'src/app/services/page.service';
 
 @Component({
   selector: 'app-page-form',
@@ -7,23 +8,18 @@ import { PageComponent } from '../page.component';
   styleUrls: ['./page-form.component.css'],
 })
 export class PageFormComponent {
-  @HostListener('document:keydown.escape') escapeHandle() {
-    this._isPageFormHidden = true;
-  }
-  pageComponent = new PageComponent();
-  _isPageFormHidden: any;
+  constructor(
+    public pageServices: PageService,
+    public elmServices: ElementService
+  ) {}
 
-  constructor() {
-    this._isPageFormHidden = true;
-  }
-
-  openPageForm() {
-    //sayfa set formunu açar
-    this._isPageFormHidden = false;
-  }
-
-  closePageForm() {
-    //sayfa set formunu kapar
-    this._isPageFormHidden = true;
+  setPageProp() {
+    //içerisindeki elementleri siler ve girilen değerlerden yeni bir sayfa oluşturur
+    this.elmServices.elements = [];
+    this.pageServices.page.pageWidth = this.pageServices._pageWidth;
+    this.pageServices.page.pageHeight = this.pageServices._pageHeight;
+    this.pageServices.page.backgroundColor = this.pageServices._pageColor;
+    this.pageServices.isHidden = true;
+    this.elmServices.clearElementField();
   }
 }

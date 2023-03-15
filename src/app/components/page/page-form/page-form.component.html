@@ -1,11 +1,11 @@
-<div class="form-popup" id="setPageForm" [hidden]="_isPageFormHidden">
+<div class="form-popup" id="setPageForm" [hidden]="pageServices.isHidden">
   <form class="form-container">
     <label for="height">Yükseklik</label>
     <input
       type="text"
       placeholder="Cm Cinsinden Giriniz."
       name="height"
-      [(ngModel)]="pageComponent._pageHeight"
+      [(ngModel)]="pageServices._pageHeight"
     />
 
     <label for="width">Genislik</label>
@@ -13,7 +13,7 @@
       type="text"
       placeholder="Cm Cinsinden Giriniz."
       name="width"
-      [(ngModel)]="pageComponent._pageWidth"
+      [(ngModel)]="pageServices._pageWidth"
     />
 
     <div>
@@ -22,22 +22,21 @@
         type="color"
         name="bgcolor"
         id="bgcolor"
-        [(ngModel)]="pageComponent._pageColor"
+        [(ngModel)]="pageServices._pageColor"
       /><br />
     </div>
 
     <button
       type="button"
       class="btn col-xs-12"
-      (click)="pageComponent.setPageProp()"
-      (click)="pageComponent.getPageSizePx()"
+      (click)="setPageProp()"
     >
       Olustur
     </button>
     <button
       type="button"
       class="btn cancel col-xs-12"
-      (click)="closePageForm()"
+      (click)="pageServices.isHidden = true"
     >
       İptal
     </button>
