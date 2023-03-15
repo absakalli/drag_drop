@@ -19,7 +19,7 @@ export class WebApiService {
       Authorization: 'bearer ' + token,
       'Content-Type': 'application/json',
     });
-    return this.http.get<_Element[]>(this.baseApiUrl + 'api/PageItem', {
+    return this.http.get<_Element[]>(this.baseApiUrl + 'api/PageSetting', {
       headers: reqHeaders,
     });
   }

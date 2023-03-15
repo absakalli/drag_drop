@@ -17,6 +17,7 @@ export class WebApiComponent {
 
   ngOnInit() {
     this.data = new _Data('hseyinsungur@gmail.com', '123456', 1, true);
+    this.login();
   }
 
   login() {
