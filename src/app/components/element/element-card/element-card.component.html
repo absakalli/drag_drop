@@ -1,31 +1,28 @@
-<!-- <button class="open-button" (click)="elementComponent.addElement()">
+<button class="open-button" (click)="addElement()">
   Add Element
 </button>
-
-<label class="cardspan open-button" for="id"
-  >ID : {{ elementComponent._id }}</label
->
+<label class="cardspan open-button" for="id">ID : {{ elmServices._id }}</label>
 <label class="cardspan open-button" for="span"
-  >Icerik : {{ elementComponent._text }}</label
+  >Icerik : {{ elmServices._text }}</label
 >
 <label class="cardspan open-button" for="bg"
-  >Background : {{ elementComponent._bgColor }}<br />{{
-    elementComponent._bgUrl
-  }}</label
+  >Background : {{ elmServices._bgColor }}<br />{{ elmServices._bgUrl }}</label
 >
 <label class="cardspan open-button" for="layer"
-  >Katman : {{ elementComponent._layer }}</label
+  >Katman : {{ elmServices._layer }}</label
 >
 <label class="cardspan open-button" for="height"
-  >Yükseklik : {{ elementComponent._height }}</label
+  >Yükseklik : {{ elmServices._height }}</label
 >
 <label class="cardspan open-button" for="width"
-  >Genislik : {{ elementComponent._width }}</label
+  >Genislik : {{ elmServices._width }}</label
 >
 <label class="cardspan open-button" for="tip"
-  >Tip : {{ elementComponent._tip }}</label
-> -->
-<button class="open-button" (click)="isElementHidden()">Duzenle</button>
-<!-- <button class="open-button" (click)="elementComponent.removeElement()">
+  >Tip : {{ elmServices._tip }}</label
+>
+<button class="open-button" (click)="openElmForm()">
+  Duzenle
+</button>
+<button class="open-button" (click)="removeElement()">
   Kaldir
-</button> -->
+</button>
