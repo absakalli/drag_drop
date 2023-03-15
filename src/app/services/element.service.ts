@@ -29,4 +29,23 @@ export class ElementService {
   public isHidden = true;
 
   constructor() {}
+
+  clearElementField() {
+    //input field ve formun içerisini temizler
+    this._elementBg = '';
+    this._id = null;
+    this._tip = '';
+    this._text = '';
+    this._layer = '';
+    this._bgColor = '';
+    this._bgUrl = '';
+    this._width = '';
+    this._height = '';
+    this._textLoc = '';
+    this._punto = '';
+    this._font = '';
+    this._isBold = false;
+    this._isItalic = false;
+    this._isUnderline = false;
+  }
 }

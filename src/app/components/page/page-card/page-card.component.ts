@@ -8,8 +8,4 @@ import { PageService } from 'src/app/services/page.service';
 })
 export class PageCardComponent {
   constructor(public pageServices: PageService) {}
-
-  isPageHidden(){
-    this.pageServices.isHidden = false;
-  }
 }
