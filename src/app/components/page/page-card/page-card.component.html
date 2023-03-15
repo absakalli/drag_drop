@@ -1,12 +1,12 @@
-<button class="open-button" (click)="pageFormComponent.openPageForm()">
+<button class="open-button" (click)="isPageHidden()">
   Yeni Sayfa
 </button>
 <label class="cardspan open-button" for="height"
-  >Sayfa Yüksekligi : {{ pageComponent._pageHeight }}</label
+  >Sayfa Yüksekligi : {{ pageServices._pageHeight }}</label
 >
 <label class="cardspan open-button" for="width"
-  >Sayfa Genisligi : {{ pageComponent._pageWidth }}</label
+  >Sayfa Genisligi : {{ pageServices._pageWidth }}</label
 >
 <label class="cardspan open-button" for="width"
-  >Sayfa Rengi : {{ pageComponent._pageColor }}</label
+  >Sayfa Rengi : {{ pageServices._pageColor }}</label
 >

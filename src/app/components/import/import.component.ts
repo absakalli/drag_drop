@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ElementComponent } from 'src/app/components/element/element.component';
-import { PageComponent } from 'src/app/components/page/page.component';
+import { ElementService } from 'src/app/services/element.service';
+import { PageService } from 'src/app/services/page.service';
 import Data from '../../Positions.json';
 
 @Component({
@@ -9,15 +9,17 @@ import Data from '../../Positions.json';
   styleUrls: ['./import.component.css'],
 })
 export class ImportComponent {
-  elementComponent = new ElementComponent();
-  pageComponent = new PageComponent();
+  constructor(
+    public elmServices: ElementService,
+    public pageServices: PageService
+  ) {}
 
   import() {
     //sayfada bulunan elementleri json dosyası olarak dışarı aktarır
-    this.pageComponent.page = Data.Page;
-    this.pageComponent._pageColor = this.pageComponent.page.backgroundColor;
-    this.pageComponent._pageHeight = this.pageComponent.page.pageHeight;
-    this.pageComponent._pageWidth = this.pageComponent.page.pageWidth;
-    this.elementComponent.elements = [...Data.Elements];
+    this.pageServices.page = Data.Page;
+    this.pageServices._pageColor = this.pageServices.page.backgroundColor;
+    this.pageServices._pageHeight = this.pageServices.page.pageHeight;
+    this.pageServices._pageWidth = this.pageServices.page.pageWidth;
+    this.elmServices.elements = [...Data.Elements];
   }
 }

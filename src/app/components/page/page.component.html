@@ -2,9 +2,9 @@
   #box
   id="example-boundary"
   class="example-boundary"
-  [style.--heightpage.cm]="page.pageHeight"
-  [style.--widthpage.cm]="page.pageWidth"
-  [style.background-color]="page.backgroundColor"
+  [style.--heightpage.cm]="pageServices.page.pageHeight"
+  [style.--widthpage.cm]="pageServices.page.pageWidth"
+  [style.background-color]="pageServices.page.backgroundColor"
   [style.background-image]="'url(assets/grid.png)'"
 >
   <app-element></app-element>

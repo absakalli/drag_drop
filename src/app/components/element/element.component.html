@@ -3,8 +3,7 @@
   [id]="element.id"
   (mousedown)="getElementProp(element, i)"
   (mouseup)="getElementProp(element, i)"
-  (contextmenu)="elementFormComponent.openElementForm()"
-  *ngFor="let element of elements; let i = index"
+  *ngFor="let element of elmServices.elements; let i = index"
   class="example-box"
   cdkDragBoundary=".example-boundary"
   cdkDrag

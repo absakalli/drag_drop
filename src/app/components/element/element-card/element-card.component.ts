@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { ElementComponent } from '../element.component';
-import { ElementFormComponent } from '../element-form/element-form.component';
+import { ElementService } from 'src/app/services/element.service';
 
 @Component({
   selector: 'app-element-card',
@@ -8,6 +7,9 @@ import { ElementFormComponent } from '../element-form/element-form.component';
   styleUrls: ['./element-card.component.css'],
 })
 export class ElementCardComponent {
-  elementComponent = new ElementComponent();
-  elementFormComponent = new ElementFormComponent();
+  constructor(public elmServices: ElementService) {}
+
+  isElementHidden() {
+    this.elmServices.isHidden = false;
+  }
 }

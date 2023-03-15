@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { _Data } from 'src/app/models/data.model';
 import { _Token } from 'src/app/models/token.model';
+import { ElementService } from 'src/app/services/element.service';
 import { WebApiService } from 'src/app/services/web-api.service';
-import { ElementComponent } from 'src/app/components/element/element.component';
 
 @Component({
   selector: 'app-web-api',
@@ -10,11 +10,10 @@ import { ElementComponent } from 'src/app/components/element/element.component';
   styleUrls: ['./web-api.component.css'],
 })
 export class WebApiComponent {
-  elementComponent = new ElementComponent();
   token: _Token;
   data: _Data;
 
-  constructor(private service: WebApiService) {}
+  constructor(private service: WebApiService, private elmServices: ElementService) {}
 
   ngOnInit() {
     this.data = new _Data('hseyinsungur@gmail.com', '123456', 1, true);
@@ -34,7 +33,7 @@ export class WebApiComponent {
   getElements() {
     this.service.getElements(this.token.accessToken).subscribe({
       next: (elements) => {
-        this.elementComponent.elements = [...elements];
+        this.elmServices.elements = [...elements];
       },
       error: (err) => {
         console.log(err);
@@ -43,7 +42,7 @@ export class WebApiComponent {
   }
 
   setElements() {
-    this.elementComponent.elements.forEach((element) => {
+    this.elmServices.elements.forEach((element) => {
       this.service.setElements(element, this.token.accessToken).subscribe({
         next: (elements) => {
           console.log(elements);
@@ -56,9 +55,9 @@ export class WebApiComponent {
   }
 
   deleteElements() {
-    if (this.elementComponent._id != undefined || null || '') {
+    if (this.elmServices._id != undefined || null || '') {
       this.service
-        .deleteElements(this.elementComponent._id, this.token.accessToken)
+        .deleteElements(this.elmServices._id, this.token.accessToken)
         .subscribe({
           next: (elements) => {
             console.log(elements);

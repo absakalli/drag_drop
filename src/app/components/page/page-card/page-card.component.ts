@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { PageFormComponent } from '../page-form/page-form.component';
-import { PageComponent } from '../page.component';
+import { PageService } from 'src/app/services/page.service';
 
 @Component({
   selector: 'app-page-card',
@@ -8,6 +7,9 @@ import { PageComponent } from '../page.component';
   styleUrls: ['./page-card.component.css'],
 })
 export class PageCardComponent {
-  pageComponent = new PageComponent();
-  pageFormComponent = new PageFormComponent();
+  constructor(public pageServices: PageService) {}
+
+  isPageHidden(){
+    this.pageServices.isHidden = false;
+  }
 }

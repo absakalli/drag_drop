@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import exportFromJSON from 'export-from-json';
-import { ElementComponent } from 'src/app/components/element/element.component';
-import { PageComponent } from 'src/app/components/page/page.component';
+import { ElementService } from 'src/app/services/element.service';
+import { PageService } from 'src/app/services/page.service';
 
 @Component({
   selector: 'app-export',
@@ -9,14 +9,16 @@ import { PageComponent } from 'src/app/components/page/page.component';
   styleUrls: ['./export.component.css'],
 })
 export class ExportComponent {
-  elementComponent = new ElementComponent();
-  pageComponent = new PageComponent();
+  constructor(
+    public elmServices: ElementService,
+    public pageServices: PageService
+  ) {}
 
   export() {
     //json dosyasındaki elementleri içeri aktarır
     const data = {
-      Page: this.pageComponent.page,
-      Elements: this.elementComponent.elements,
+      Page: this.pageServices.page,
+      Elements: this.elmServices.elements,
     };
     const fileName = 'Div_Att';
     const exportType = 'json';
