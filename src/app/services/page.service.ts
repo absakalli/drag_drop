@@ -6,6 +6,7 @@ import { _Page } from '../models/page.model';
 })
 export class PageService {
   page: _Page;
+  box: any;
   _pageWidth: any;
   _pageHeight: any;
   _pageWidthPx: any;
@@ -14,4 +15,10 @@ export class PageService {
   isHidden = true;
 
   constructor() {}
+
+  getPageSizePx() {
+    //sayfanın boyutunu pixel cinsinden alır
+    this._pageHeightPx = this.box.nativeElement.offsetHeight;
+    this._pageWidthPx = this.box.nativeElement.offsetWidth;
+  }
 }

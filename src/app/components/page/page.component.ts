@@ -18,15 +18,14 @@ export class PageComponent {
     this.getPageProp();
   }
 
+  ngAfterViewInit() {
+    this.pageServices.box = this.box;
+    this.pageServices.getPageSizePx();
+  }
+
   getPageProp() {
     this.pageServices._pageHeight = this.pageServices.page.pageHeight;
     this.pageServices._pageWidth = this.pageServices.page.pageWidth;
     this.pageServices._pageColor = this.pageServices.page.backgroundColor;
-  }
-
-  getPageSizePx() {
-    //sayfanın boyutunu pixel cinsinden alır
-    this.pageServices._pageHeightPx = this.box.nativeElement.offsetHeight;
-    this.pageServices._pageWidthPx = this.box.nativeElement.offsetWidth;
   }
 }
