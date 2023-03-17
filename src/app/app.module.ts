@@ -7,7 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
 
-import { MaterialExampleModule } from 'src/material.module';
+import { MaterialModule } from 'src/material.module';
 import { AppComponent } from './app.component';
 import { ElementComponent } from './components/element/element.component';
 import { ElementFormComponent } from './components/element/element-form/element-form.component';
@@ -43,7 +43,7 @@ import { WebApiComponent } from './components/web-api/web-api.component';
     MatSelectModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    MaterialExampleModule,
+    MaterialModule,
   ],
   bootstrap: [AppComponent],
 })
